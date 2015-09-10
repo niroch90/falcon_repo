@@ -1,0 +1,149 @@
+﻿
+
+/*.Tab .ajax__tab_header
+{
+    color: #4682b4;
+    font-family:Calibri;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #ffffff;
+    margin-left: 0px;
+}
+/*Body*/
+.Tab .ajax__tab_body
+{
+    border:1px solid #b4cbdf;
+    padding-top:0px;
+}
+/*Tab Active*/
+.Tab .ajax__tab_active .ajax__tab_tab
+{
+    color: #ffffff;
+    background:url("http://www.c-sharpcorner.com/UploadFile/raghavau/css-style-sheet-for-ajax-tabcontainer-control-in-Asp-Net-2-0/Images/tab_active.gif") repeat-x;
+    height:20px;
+}
+.Tab .ajax__tab_active .ajax__tab_inner
+{
+    color: #ffffff;
+    background:url("http://www.c-sharpcorner.com/UploadFile/raghavau/css-style-sheet-for-ajax-tabcontainer-control-in-Asp-Net-2-0/Images/tab_left_active.gif") no-repeat left;
+    padding-left:10px;
+    height:20px;
+}
+.Tab .ajax__tab_active .ajax__tab_outer
+{
+    color: #ffffff;
+    background:url("http://www.c-sharpcorner.com/UploadFile/raghavau/css-style-sheet-for-ajax-tabcontainer-control-in-Asp-Net-2-0/Images/tab_right_active.gif") no-repeat right;
+    padding-right:6px;
+    height:20px;
+}
+/*Tab Hover*/
+.Tab .ajax__tab_hover .ajax__tab_tab
+{
+    color: #000000;
+    background:url("http://www.c-sharpcorner.com/UploadFile/raghavau/css-style-sheet-for-ajax-tabcontainer-control-in-Asp-Net-2-0/Images/tab_hover.gif") repeat-x;
+    height:20px;
+}
+.Tab .ajax__tab_hover .ajax__tab_inner
+{
+    color: #000000;
+    background:url("http://www.c-sharpcorner.com/UploadFile/raghavau/css-style-sheet-for-ajax-tabcontainer-control-in-Asp-Net-2-0/Images/tab_left_hover.gif") no-repeat left;
+    padding-left:10px;
+    height:20px;
+}
+.Tab .ajax__tab_hover .ajax__tab_outer
+{
+    color: #000000;
+    background:url("http://www.c-sharpcorner.com/UploadFile/raghavau/css-style-sheet-for-ajax-tabcontainer-control-in-Asp-Net-2-0/Images/tab_right_hover.gif") no-repeat right;
+    padding-right:6px;
+    height:20px;
+}
+/*Tab Inactive*/
+.Tab .ajax__tab_tab
+{
+    color: #666666;
+    background:url("http://www.c-sharpcorner.com/UploadFile/raghavau/css-style-sheet-for-ajax-tabcontainer-control-in-Asp-Net-2-0/Images/tab_Inactive.gif") repeat-x;
+    height:20px;
+}
+.Tab .ajax__tab_inner
+{
+    color: #666666;
+    background:url("http://www.c-sharpcorner.com/UploadFile/raghavau/css-style-sheet-for-ajax-tabcontainer-control-in-Asp-Net-2-0/Images/tab_left_inactive.gif") no-repeat left;
+    padding-left:10px;
+    height:20px;
+}
+.Tab .ajax__tab_outer
+{
+    color: #666666;
+    background:url("http://www.c-sharpcorner.com/UploadFile/raghavau/css-style-sheet-for-ajax-tabcontainer-control-in-Asp-Net-2-0/Images/tab_right_inactive.gif") no-repeat right;
+    padding-right:6px;
+    margin-right: 2px;
+    height:20px;
+}*/
+
+.selectboxsmall
+{
+    Height:250px; 
+        Width:350px;
+  overflow-x:auto;
+  border:ridge;
+  border-color:lightsteelblue;
+  border-radius:8px;
+  font-family:arial, helvetica, sans-serif;
+ 
+}
+.selectboxlarge
+{
+    Height:250px; 
+        Width:610px;
+
+  border:ridge;
+  border-color:lightsteelblue;
+  border-radius:8px;
+  font-family:arial, helvetica, sans-serif;
+ 
+}
+
+/*input[type='text']
+{
+width: 300px;
+height: 29px;
+border-radius: 3px;
+border: 1px solid #CCC;
+padding: 8px;
+font-weight: 200;
+font-size: 15px;
+font-family: Verdana;
+box-shadow: 1px 1px 5px #CCC;
+}
+
+input[type='text']:hover
+{
+width: 300px;
+height: 29px;
+border-radius: 3px;
+border: 1px solid #aaa;
+padding: 8px;
+font-weight: 200;
+font-size: 15px;
+font-family: Verdana;
+box-shadow: 1px 1px 5px #CCC;
+}*/
+
+.roundCorner
+{
+    border-radius: 25px;
+    background-color: #4F81BD;
+    color:#FFFFFF;
+    text-align :center;
+    font-family:arial, helvetica, sans-serif;
+    padding: 5px 10px 10px 10px;
+    font-weight:bold;
+    width:110px;
+    height:33px;
+} 
+
+.lablecss{
+    font-family:Arial, Helvetica, sans-serif;
+    text-align:center;
+}
+
