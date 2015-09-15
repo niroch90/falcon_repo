@@ -63,7 +63,7 @@
     
     <title>my page</title>
 </head>
-<body style="width:100%;">
+<body style="width:100%;padding-bottom:20px;">
 
     <form id="form1" runat="server">
         <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false"/>
@@ -95,7 +95,7 @@
                     <div class="panel panel-default">
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                             <ContentTemplate>
-                                <cc1:Editor ID="Editor1" runat="server" Height="330px"  />
+                                <cc1:Editor ID="Editor1" runat="server" Height="330px" OnContentChanged="editor_content_load" />
                             </ContentTemplate>
                             <Triggers>
                                 <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick"/>

@@ -19,38 +19,16 @@ namespace falcons
          
         protected void Page_Load(object sender, EventArgs e)
         {
-            AjaxControlToolkit.HTMLEditor.Editor editor_previous_content = (AjaxControlToolkit.HTMLEditor.Editor)Master.FindControl("editor1");
-            string sessionID = HttpContext.Current.Session.SessionID;
-            string htmlEncoded = WebUtility.HtmlEncode(editor_previous_content.Content);
-            //Session["my_editor_content"] = (String)(Editor1.Content);  
-            String CS = ConfigurationManager.ConnectionStrings["falcon_cs"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(CS))
-            {
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "update dbo.Falcon_html_data set Html_Content=@sqlHtmlcnt where Session_ID=@sqlsessionID if @@ROWCOUNT=0 insert into dbo.Falcon_html_data values(@sqlsessionID,@sqlHtmlcnt)";
-                cmd.Connection = con;
-                cmd.Parameters.AddWithValue("@sqlHtmlcnt", htmlEncoded);
-                cmd.Parameters.AddWithValue("@sqlsessionID", sessionID);
-                con.Open();
-                cmd.ExecuteReader();
-                con.Close();
-            }
-           // AjaxControlToolkit.HTMLEditor.Editor editor_previous_content = (AjaxControlToolkit.HTMLEditor.Editor)Master.FindControl("editor1");
+           
 
-           // Session["my_editor_content"] = (String)(editor_previous_content.Content);
+           // Button1_Click();
         }
-        //void Page_PreRender(object sender, EventArgs e)
-        //{
-        //    AjaxControlToolkit.HTMLEditor.Editor editor_previous_content = (AjaxControlToolkit.HTMLEditor.Editor)Master.FindControl("editor1");
+        protected void Page_PreInit(object sender,EventArgs e)
+        {
+            // Create an event handler for the master page's contentCallEvent event
+            Master.contentCallEvent += new EventHandler(Button1_Click);
+        }
 
-        //    // Save PageArrayList before the page is rendered.
-        //    Session["my_editor_content"] = (String)(editor_previous_content.Content);
-
-        //}
-
-        
-
-        //AjaxControlToolkit.HTMLEditor.Editor master_editor_content;
         protected void Button1_Click(object sender, EventArgs e)
         {
             AjaxControlToolkit.HTMLEditor.Editor master_editor_content = (AjaxControlToolkit.HTMLEditor.Editor)Master.FindControl("editor1");
