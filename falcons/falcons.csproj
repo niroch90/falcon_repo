@@ -228,6 +228,7 @@
     <Compile Include="Falcons.Master.designer.cs">
       <DependentUpon>Falcons.Master</DependentUpon>
     </Compile>
+    <Compile Include="GoogleImageUpload.cs" />
     <Compile Include="GoogleSearch.cs" />
     <Compile Include="Image_seo.aspx.cs">
       <DependentUpon>Image_seo.aspx</DependentUpon>
@@ -236,7 +237,6 @@
     <Compile Include="Image_seo.aspx.designer.cs">
       <DependentUpon>Image_seo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="KeywordImage.cs" />
     <Compile Include="Keyword_research.aspx.cs">
       <DependentUpon>Keyword_research.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
