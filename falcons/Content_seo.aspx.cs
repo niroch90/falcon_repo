@@ -16,7 +16,7 @@ namespace falcons
 {
     public partial class Content_seo : System.Web.UI.Page
     {
-         
+       
         protected void Page_Load(object sender, EventArgs e)
         {
            
@@ -31,7 +31,7 @@ namespace falcons
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            AjaxControlToolkit.HTMLEditor.Editor master_editor_content = (AjaxControlToolkit.HTMLEditor.Editor)Master.FindControl("editor1");
+            AjaxControlToolkit.HTMLEditor.Editor master_editor_content = (AjaxControlToolkit.HTMLEditor.Editor)Master.FindControl("Editor1");
             //content_lable.Text = master_editor_content.Content;
             HtmlDocument doc = new HtmlDocument();
             doc.LoadHtml(master_editor_content.Content);
@@ -206,6 +206,62 @@ namespace falcons
             Uri url = new Uri(searched_url);
             int position = GetPosition(url, searched_term);
             url_search_result.InnerText = "your website position is:" + position.ToString();
+        }
+
+        //word count
+       protected void countwords_btnclick(object sender,EventArgs e)
+        {
+            AjaxControlToolkit.HTMLEditor.Editor master_editor= (AjaxControlToolkit.HTMLEditor.Editor)Master.FindControl("Editor1");
+            String mastereditor_content = master_editor.Content;
+            bool tagsplit = true;
+            int wordresult = CountWords(mastereditor_content,tagsplit);
+            double word_percentage = ((double)(wordresult) / 700.00) * 100;
+            wordResult.Text = "no of words in the content:"+wordresult.ToString();
+           // progress_text.Visible = true;
+           //progress_block.Visible = true;
+            //progress_text.Style.Add("display", "block");
+            string word_count_string = word_percentage.ToString("F2") + "%";
+           // word_percentage_div.Style.Add("display", "block");
+            progress_block.Style.Add("display", "block");
+            progress_text.Style.Add("display", "block");
+            word_percentage_div.Style.Add("width", word_count_string);
+            WordCountText = "strength"+word_count_string;
+
+         }
+
+
+       public string WordCountText
+       {
+           get;
+           set;
+       }
+       //public string Word_count_text
+       //{
+       //    get { return word_count_text; }
+       //    set { word_count_text = value; }
+       //}
+        public static int CountWords(string strText, bool stripTags)
+        {
+            // Declare and initialize the variable holding the number of counted words
+            int countedWords = 0;
+
+            // If the stripTags argument was passed as false
+            if (stripTags == false)
+            {
+                // Simply count the words in the string by splitting them wherever a space is found
+                countedWords = strText.Split(' ').Length;
+            }
+            else
+            {
+                // If the user wants to strip tags, first define the tag form
+                Regex tagMatch = new Regex("<[^>]+>");
+                // Replace the tags with an empty string so they are not considered in count
+                strText = tagMatch.Replace(strText, "");
+                // Count the words in the string by splitting them wherever a space is found
+                countedWords = strText.Split(' ').Length;
+            }
+            // Return the number of words that were counted
+            return countedWords;
         }
 
        

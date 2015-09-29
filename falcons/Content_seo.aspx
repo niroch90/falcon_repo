@@ -14,17 +14,34 @@
         });
         //]]>
 </script>
+   
+   <%-- <script type="text/javascript">
+        var editorControl = document.getElementById('<%=Master.FindControl("Editor1").ClientID %>');
+        $(document).ready(function () {
+            $('#WordCountBtn').click(function(){
+                var content = editorContorl.get_content();
+            $.ajax({
+                url: 'Content_seo.aspx/CountWords',
+                method: 'post',
+                conentType: 'application/json',
+                data: JSON.stringify({ strText: content, stripTags: 'true' }),
+                dataType: 'json',
+                success:function(data)
+                {
+                    $('#<%= wordRResult.ClientID %>').text(data.d.countedWords);
+                   
+                },
+                error:function(error)
+                {
+                    alert(Error);
+                }
+            });
 
-     <%-- <script type="text/javascript">
-          $(function () {
-              $("#<% =accordion_1.ClientID %>").accordion({
-                  //active: false, collapsible: true, heightStyle: "content", alwaysOpen: false
-              });
-          });
-  </script>--%>
-
-    
-    <div>
+            });
+        });
+    </script>--%>
+   
+     <div>
      <div class="row">
            <%--<div class="col-md-12">
                  </div>--%>
@@ -164,6 +181,30 @@ Title tags should also be unique! Think your title as a 4-8 word ad, so do your 
                 </Panes>
             </ajaxToolkit:Accordion>
          </div>
+          <div class="col-md-6">
+              
+              <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                  <ContentTemplate>
+                      
+                      <asp:Button ID="WordCountBtn" runat="server" Text="Click To Count Words" OnClick="countwords_btnclick"/>
+              <asp:Label ID="wordResult" runat="server" ></asp:Label>
+                      <div>
+                          <div id="progress_block" class="progress" runat="server" style="display:none;" >
+  <div id="word_percentage_div" class="progress-bar" role="progressbar" 
+  aria-valuemin="0" aria-valuemax="100" runat="server">
+      <div>
+    <div id="progress_text" runat="server" ><%= WordCountText%></div>
+          </div>
+  </div>
+</div>
+                      </div>
+                  </ContentTemplate>
+                  <Triggers>
+                      <asp:AsyncPostBackTrigger ControlID="WordCountBtn" EventName="Click"/>
+                  </Triggers>
+              </asp:UpdatePanel>
+              
+                   </div>
 
     </div>
 
