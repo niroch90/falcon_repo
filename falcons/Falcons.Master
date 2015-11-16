@@ -6,18 +6,15 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-     <script type="text/javascript">
-
-         $(document).ready(function () {
-
-             $(".selectpicker").selectpicker();
-         });
+<script type="text/javascript">
+$(document).ready(function () {
+$(".selectpicker").selectpicker();
+});
          //cursor setting
-
-    </script>
+</script>
     
   
-    <style type="text/css">
+<style type="text/css">
 .bootstrap-select > .dropdown-toggle {
     width: auto !important;
     padding-right: 25px;
@@ -27,109 +24,73 @@
    margin: 0 !important;
 }
 </style>
-   <%--<style type="text/css">
-        .nav-tabs a, .nav-tabs a:hover, .nav-tabs a:focus {
-            outline: 0;
-        }
-    </style>--%>
-    
-    
-    
-    <link href="css/SeoStyle.css" rel="stylesheet" />
-    
-    <link href="css/ihover.css" rel="stylesheet" />
-    <script src="js/npm.js"></script>
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <link href="css/bootstrap-theme.css" rel="stylesheet" />
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap-select.js"></script>
-    <link href="css/bootstrap.css" rel="stylesheet" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/bootstrap-select.css" rel="stylesheet" />
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+        <link href="css/SeoStyle.css" rel="stylesheet" />
+        <link href="css/boxMeterial.css" rel="stylesheet" />
+        <link href="css/ihover.css" rel="stylesheet" />
+        <script src="js/npm.js"></script>
+        <script src="js/jquery-1.11.3.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <link href="css/bootstrap-theme.css" rel="stylesheet" />
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/bootstrap-select.js"></script>
+        <link href="css/bootstrap.css" rel="stylesheet" />
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+        <link href="css/bootstrap-select.css" rel="stylesheet" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   
-   
-
-
-   <%-- <script type="text/javascript">
-        //<![CDATA[
-        $(document).
-        Sys.Application.add_load(function set_cursor () {
-            $find("Editor1").get_editPanel().set_startEnd(false);
-        });
-        //]]>
-</script>--%>
-    
-    <title>my page</title>
+<title>my page</title>
 </head>
 <body style="width:100%;padding-bottom:20px;">
-
     <form id="form1" runat="server">
         <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false"/>
-       <div style="overflow:hidden;">
-           <div class="row" ">
-               
-              <%-- <div style="display:inline-block;"> <asp:LinkButton ID="LinkButton1" runat="server" OnClick="Home_redirect">Home</asp:LinkButton> </div>
-               <div style="display:inline-block;"><asp:LinkButton ID="LinkButton2" runat="server" OnClick="Content_seo_redirect">Content SEO</asp:LinkButton> </div>
-               <div style="display:inline-block;"><asp:LinkButton ID="LinkButton3" runat="server" OnClick="Social_media_redirect">Social Media</asp:LinkButton> </div>
-               <div style="display:inline-block;"><asp:LinkButton ID="LinkButton4" runat="server" OnClick="Image_seo_redirect">Image Seo</asp:LinkButton> </div>--%>
-                   
-              <div class="panel panel-default" style="width:100%;">
-    <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" OnMenuItemDataBound="Menu1_DataBinding1" CssClass="nav navbar-fix-top" StaticMenuStyle-CssClass="nav navbar-nav" 
+        <div style="overflow:hidden;">
+        <div class="row" ">
+            <%-- <div style="display:inline-block;"> <asp:LinkButton ID="LinkButton1" runat="server" OnClick="Home_redirect">Home</asp:LinkButton> </div>
+            <div style="display:inline-block;"><asp:LinkButton ID="LinkButton2" runat="server" OnClick="Content_seo_redirect">Content SEO</asp:LinkButton> </div>
+            <div style="display:inline-block;"><asp:LinkButton ID="LinkButton3" runat="server" OnClick="Social_media_redirect">Social Media</asp:LinkButton> </div>
+            <div style="display:inline-block;"><asp:LinkButton ID="LinkButton4" runat="server" OnClick="Image_seo_redirect">Image Seo</asp:LinkButton> </div>--%>
+        <div class="panel panel-default" style="width:100%;">
+        <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" OnMenuItemDataBound="Menu1_DataBinding1" CssClass="nav navbar-fix-top" StaticMenuStyle-CssClass="nav navbar-nav" 
         StaticSelectedStyle-CssClass="active"
         DynamicMenuStyle-CssClass="dropdown-menu" 
         IncludeStyleBlock="false"
         EnableTheming="false"
         SkipLinkText="">
-        
-    </asp:Menu>
-     
- </div>
-  </div>
-           <div class="panel-default" style="padding-left:10px;padding-right:10px;">
-            <div class="row" style="height:200px;">
-                <div class="col-md-8">
-                    <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></ajaxToolkit:ToolkitScriptManager>
-                    <asp:Timer ID="Timer1" runat="server" Interval="10000" OnTick="Timer1_Tick"></asp:Timer>
-                    <div class="panel panel-default">
-                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                            <ContentTemplate>
-                                <cc1:Editor ID="Editor1" runat="server" Height="330px" OnContentChanged="editor_content_load" />
-                            </ContentTemplate>
-                            <Triggers>
-                                <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick"/>
-                            </Triggers>
-                        </asp:UpdatePanel>
-                        
-                    </div> 
-                </div>
-                
-                   <div class="col-md-4">
-
-                       <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                         </asp:ContentPlaceHolder>
-                    </div>
-                 
-                 </div>
-
-
-               <div class="row">
-                  
-                    <div class="col-md-12">
-                        
-                       <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
-        
-                      </asp:ContentPlaceHolder>
-                   </div>
-                   
-                   <asp:HiddenField ID="sessionvalue" runat="server" />
-                </div>
+        </asp:Menu>
+        </div>
+        </div>
+        <div class="panel-default" style="padding-left:10px;padding-right:10px;">
+        <div class="row" style="height:200px;">
+            <div class="col-md-8">
+            <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></ajaxToolkit:ToolkitScriptManager>
+            <asp:Timer ID="Timer1" runat="server" Interval="10000" OnTick="Timer1_Tick"></asp:Timer>
+            <div class="panel panel-default">
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+            <cc1:Editor ID="Editor1" runat="server" Height="330px" OnContentChanged="editor_content_load" />
+            </ContentTemplate>
+            <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick"/>
+            </Triggers>
+            </asp:UpdatePanel>
+            </div> 
+            </div>
+            <div class="col-md-4">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-12">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+        </asp:ContentPlaceHolder>
+            </div>
+            <asp:HiddenField ID="sessionvalue" runat="server" />
+            </div>
            </div>
         </div>
-          
-    </form>
-    
+</form>
 </body>
 </html>

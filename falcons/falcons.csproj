@@ -148,6 +148,7 @@
   <ItemGroup>
     <Content Include="css\bootstrap-select.css" />
     <Content Include="css\bootstrap-select.min.css" />
+    <Content Include="css\boxMeterial.css" />
     <Content Include="css\ihover.css" />
     <Content Include="css\jquery-ui.css" />
     <Content Include="css\jquery-ui.min.css" />

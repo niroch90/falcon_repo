@@ -67,6 +67,42 @@ namespace falcons {
         protected global::System.Web.UI.WebControls.Button html_fix_button;
         
         /// <summary>
+        /// url_tbox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox url_tbox;
+        
+        /// <summary>
+        /// search_term control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox search_term;
+        
+        /// <summary>
+        /// url_search_btn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button url_search_btn;
+        
+        /// <summary>
+        /// url_search_result control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea url_search_result;
+        
+        /// <summary>
         /// titletbox control.
         /// </summary>
         /// <remarks>
@@ -110,42 +146,6 @@ namespace falcons {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox metaresulttbox;
-        
-        /// <summary>
-        /// url_tbox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox url_tbox;
-        
-        /// <summary>
-        /// search_term control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox search_term;
-        
-        /// <summary>
-        /// url_search_btn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button url_search_btn;
-        
-        /// <summary>
-        /// url_search_result control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea url_search_result;
         
         /// <summary>
         /// Accordion2 control.
