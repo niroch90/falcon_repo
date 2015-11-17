@@ -13,21 +13,21 @@ namespace falcons {
     public partial class Social_sharing {
         
         /// <summary>
-        /// Button1 control.
+        /// SocialBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button SocialBtn;
         
         /// <summary>
-        /// OgtagLbox control.
+        /// socialLbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox OgtagLbox;
+        protected global::System.Web.UI.WebControls.ListBox socialLbox;
     }
 }

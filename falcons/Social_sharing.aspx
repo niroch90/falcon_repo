@@ -8,17 +8,21 @@
         });
         //]]>
 </script>
-    <div>
+  
      <!-- Social Media Sharing Tab-->
 
-        <div>
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    View Social Media Tags:<asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+        
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading ">
+                    <span class="col-md-9 pull-left ">Generate Social Media Tags</span>
+                    <div>
+                        <asp:Button ID="SocialBtn" runat="server" Text="Button" OnClick="SocialBtn_Click" CssClass="btn btn-danger" />
+                    </div>
                 </div>
-               
                 <div class="panel-body">
-                    <asp:ListBox ID="OgtagLbox" runat="server" Height="164px" Width="217px"></asp:ListBox>
+                    <asp:ListBox ID="socialLbox" runat="server" CssClass="form-control"></asp:ListBox>
                 </div>
             </div>
         </div>
