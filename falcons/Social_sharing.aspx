@@ -8,13 +8,34 @@
         });
         //]]>
 </script>
-    <div>
+  
      <!-- Social Media Sharing Tab-->
 
-        <div role="tabpanel" class="tab-pane" id="socialmedia">
-            <div class="row">
-               
+        
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading ">
+                    <span class="col-md-9 pull-left ">Check Meta Tags</span>
+                    <div>
+                        <asp:Button ID="SocialBtn" runat="server" Text="Button" OnClick="SocialBtn_Click" CssClass="btn btn-danger" />
+                        
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <asp:ListBox ID="socialLbox" runat="server" CssClass="form-control" Height="300px"></asp:ListBox> 
+                </div>
             </div>
         </div>
     </div>
  </asp:Content>
+<asp:Content runat="server" ContentPlaceHolderID="ContentPlaceHolder2">
+    
+
+      
+                           
+               
+   
+</asp:Content>
+
+

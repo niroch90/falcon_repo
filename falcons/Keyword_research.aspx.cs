@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
 
 namespace falcons
 {
@@ -54,7 +55,8 @@ namespace falcons
                 TitleListBox.Items.Clear();
                 UrlListBox.Items.Clear();
                 ContentListBox.Items.Clear();
-                
+                DataTable dt = new DataTable();
+                dt.Columns.Add("imageUrl", typeof(string));
                 foreach (var item in search.Items)
                 {
 
@@ -63,10 +65,44 @@ namespace falcons
                     UrlListBox.Items.Add(item.Link);
                     ContentListBox.Items.Add(item.Snippet);
                     //ContentListBox.Attributes.Add()
+                 // var keysforimages = item.Pagemap["cse_image"];
                     
+                    //var keyforSingleImage = keysforimages; 
+                    //var keyforsingleimage;
+                    if(item.Pagemap != null)
+                    {
+                        foreach (var keysforimages in item.Pagemap.Keys)
+                        {
+                            if (keysforimages == "cse_image")
+                            {
+                                var singleImageKey = item.Pagemap["cse_image"];
+                                foreach (var images in singleImageKey)
+                                {
+
+                                    if (images.ContainsKey("src"))
+                                    {
+                                        var imagepath = images["src"];
+
+
+                                        dt.Rows.Add(imagepath);
+                                      
+                                    
+                                       // dt.Rows.Add(imagepath);
+                                    }
+
+                                }
+                            }
+                        }
+
+                    }
+                   
+                
 
                 }
-                
+                Repeater1.DataSource = dt;
+                Repeater1.DataBind();
+
+              
             }
 
 
@@ -98,6 +134,7 @@ namespace falcons
                 UrlListBox.Items.Clear();
                 ContentListBox.Items.Clear();
                
+ 
                 foreach (var results in webresults)
                 {
 
@@ -106,6 +143,7 @@ namespace falcons
                     UrlListBox.Items.Add(results.Url);
                     ContentListBox.Items.Add(results.Description);
                     //ContentListBox.Attributes.Add()
+
                     
                 }
 
@@ -118,6 +156,18 @@ namespace falcons
 
 
         }
+
+        //protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        //{
+        //    if (e.Row.RowType == DataControlRowType.DataRow)
+        //    {
+        //        Image imagefield = new Image();
+        //        if (imagefield != null)
+        //        {
+        //            imagefield.ImageUrl=;
+        //        }
+        //    }
+        //}
 
     
     

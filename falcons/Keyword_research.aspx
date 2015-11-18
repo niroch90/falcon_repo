@@ -78,6 +78,57 @@
                         </div>
                     </div>
                  </div>
+            <div class="row">
+                
+                   <div class="col-md-12">
+                 <%--   <asp:GridView ID="GridView1" runat="server"  AutoGenerateColumns="false">
+                        
+                        <Columns>
+                            <asp:TemplateField>
+                                
+                               <ItemTemplate>
+                                   <table>
+                                       <tr>
+                                           <td>Image</td>
+                                           <td>Image Url</td>
+                                       </tr>
+                                       <tr>
+                                           <td style="width:300px;height:300px;"><asp:Image ID="Image2" runat="server"  ImageUrl='<%#Eval("imageUrl")%>' Width="300px" Height="300px"/></td>
+                                         <td style="width:600px;height:300px;"><%#Eval("imageUrl")%></td>
+                                       </tr>
+
+                                   </table>
+                                 </ItemTemplate>
+                              </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>--%>
+                       <asp:Repeater ID="Repeater1" runat="server">
+                           <HeaderTemplate>
+                               <div class="panel panel-primary">
+                                   <div class="panel-heading">Related Images</div>
+                               <table class="table table-bordered">
+                                   <tr>
+                                       <th>Image</th>
+                                       <th>Image Url</th>
+                                   </tr>
+                           </HeaderTemplate>
+                           <ItemTemplate>
+                               <tr>
+                                   <td style="width:150px;height:150px;"><asp:Image ID="Image2" runat="server"  ImageUrl='<%#Eval("imageUrl")%>' Width="150px" Height="150px" CssClass="img-thumbnail"/></td>
+                                   <td style="width:600px;height:150px;" ><%#Eval("imageUrl")%></td>
+                               </tr>
+                           </ItemTemplate>
+                           <FooterTemplate>
+                               </table>
+                               </div>
+                           </FooterTemplate>
+
+
+                       </asp:Repeater>
+               </div>
+
+               
+            </div>
          </ContentTemplate>
         <%--<Triggers>
             <asp:AsyncPostBackTrigger ControlID="Button1" EventName="Click" />
