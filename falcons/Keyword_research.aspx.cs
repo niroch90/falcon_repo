@@ -10,6 +10,9 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
+using System.Text.RegularExpressions;
+using HtmlAgilityPack;
+using System.Text;
 
 namespace falcons
 {
@@ -156,6 +159,79 @@ namespace falcons
 
 
         }
+
+    protected void kwExtractorbtn_Click(object sender, EventArgs e)
+    {
+        AjaxControlToolkit.HTMLEditor.Editor master_editor_content = (AjaxControlToolkit.HTMLEditor.Editor)Master.FindControl("Editor1");
+        String editortext = master_editor_content.Content;
+        string cs = ConfigurationManager.ConnectionStrings["falcon_cs"].ConnectionString;
+        using (SqlConnection con = new SqlConnection(cs))
+        {
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT word FROM StopWordsList", con);
+
+            //cmd.CommandText="SELECT word FROM StopWordsList";
+            //cmd.CommandType=System.Data.CommandType.Text;
+
+            //cmd.ExecuteNonQuery();
+            DataSet ds = new DataSet();
+            sda.Fill(ds, "StopWordsList");
+            List<string> stopwords = new List<string>();
+            foreach (DataRow row in ds.Tables["StopWordsList"].Rows)
+            {
+                stopwords.Add(row["word"].ToString());
+            }
+
+
+            HashSet<string> stopWords = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            string[] lines = stopwords.ToArray();
+            foreach (string s in lines)
+            {
+                stopWords.Add(s); // Assuming that each line contains one stop word.
+            }
+            HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(master_editor_content.Content);
+            var root = doc.DocumentNode;
+            var sb = new StringBuilder();
+            //DescendantNodesAndSelf()
+            foreach (var node in root.DescendantNodesAndSelf())
+            {
+                if (!node.HasChildNodes)
+                {
+                    string text = node.InnerText;
+                    if (!string.IsNullOrEmpty(text))
+                        sb.AppendLine(text.Trim());
+                }
+            }
+            string[] editorWords = sb.ToString().Split(' ');
+            List<string> keywordList = new List<string>();
+            foreach(string word in editorWords)
+            {
+                MatchCollection matches = Regex.Matches(word, "[a-z]([:']?[a-z])*",
+                                        RegexOptions.IgnoreCase);
+                foreach (Match match in matches)
+                {
+                    if (!stopWords.Contains(match.Value))
+                    {
+                        keywordList.Add(match.Value);
+                       // editorKeywordsLbox.Items.Add(match.Value);
+                        //ProcessKeyword(match.Value); // Do whatever you need to do here
+                    }
+                }
+
+            }
+
+            foreach(string keyword in keywordList)
+            {
+                  if(!keyword.EndsWith("ing") && !keyword.EndsWith("ed"))
+                  {
+                      editorKeywordsLbox.Items.Add(keyword);
+                  }
+
+            }
+
+
+        }
+    }
 
         //protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         //{

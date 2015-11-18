@@ -80,31 +80,49 @@
             
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <div class="row">
-                <div class="box">
-                <div class="box-icon">
-                <span class="fa fa-4x fa-html5"></span>
+                <div class="iconbox">
+                <div class="iconbox-icon">
+                <span class="glyphicon glyphicon-wrench"></span>
                 </div>
-                <div class="info">
+                <div class="featureinfo">
                 <h4 class="text-center">Title</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti atque, tenetur quam aspernatur corporis at explicabo nulla dolore necessitatibus doloremque exercitationem sequi dolorem architecto perferendis quas aperiam debitis dolor soluta!</p>
-                <asp:Button ID="html_fix_button" runat="server" Text="Fix Html Tags Errors"  CssClass="btn-default" OnClick="html_fix_button_Click"/>
+                <asp:Button ID="html_fix_button" runat="server" Text="Fix Html Tags Errors"  CssClass="btn btn-primary" OnClick="html_fix_button_Click"/>
                 </div>
                 </div>
                 </div>
 
                 <div class="row">
                 
-                <div class="box">
-                <div class="box-icon">
-                <span class="fa fa-4x fa-html5"></span>
+                <div class="iconbox">
+                <div class="iconbox-icon">
+                <span class="glyphicon glyphicon-search"></span>
                 </div>
-                <div class="info">
+                <div class="featureinfo">
                 <h4 class="text-center">Title</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti atque, tenetur quam aspernatur corporis at explicabo nulla dolore necessitatibus doloremque exercitationem sequi dolorem architecto perferendis quas aperiam debitis dolor soluta!</p>
-                Url: <asp:TextBox ID="url_tbox" runat="server"></asp:TextBox> 
-                Search Term:<asp:TextBox ID="search_term" runat="server"></asp:TextBox>
-                <asp:Button ID="url_search_btn" runat="server" Text="Search" OnClick="url_search_btn_Click" /><br />
-                 <textarea id="url_search_result" cols="40" rows="2" runat="server"></textarea>
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                    <table class="table table-condensed">
+                 <tr>
+                     <td>Url:</td><td> <asp:TextBox ID="url_tbox" runat="server" CssClass="form-control"></asp:TextBox></td>
+                     </tr>
+                    <tr>
+                     <td>Search Term:</td><td><asp:TextBox ID="search_term" runat="server" CssClass="form-control"></asp:TextBox></td>
+                 </tr>
+                    <tr>
+                        <td></td><td><asp:Button ID="url_search_btn" runat="server" Text="Search" OnClick="url_search_btn_Click" CssClass="btn btn-primary"/></td>
+                    </tr>
+                    <tr>
+                          <td></td><td><textarea id="url_search_result" cols="40" rows="2" runat="server" class="form-control"></textarea></td>
+                    </tr>
+                </table>
+                        </div>
+                    </div>
+                    
+                
+                
+                 
                 </div>
                 </div>
           
@@ -114,11 +132,11 @@
         
             
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <div class="box">
-                <div class="box-icon">
-                <span class="fa fa-4x fa-css3"></span>
+                <div class="iconbox">
+                <div class="iconbox-icon">
+                <span class="glyphicon glyphicon-open-file"></span>
                 </div>
-                <div class="info">
+                <div class="featureinfo">
                 <h4 class="text-center">Title</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti atque, tenetur quam aspernatur corporis at explicabo nulla dolore necessitatibus doloremque exercitationem sequi dolorem architecto perferendis quas aperiam debitis dolor soluta!</p>
                 <div class="panel panel-info" >
@@ -132,7 +150,7 @@
                         <tr><td>Keywords</td><td>
                             <asp:TextBox ID="keywordstbox" runat="server" CssClass="form-control"></asp:TextBox></td></tr>
                         <tr><td></td><td>
-                            <asp:Button ID="metatagbtn" runat="server" Text="Generate Meta Tags"  OnClick="metatagbtn_Click"/></td><td></td></tr>
+                            <asp:Button ID="metatagbtn" runat="server" Text="Generate Meta Tags"  OnClick="metatagbtn_Click" CssClass="btn btn-primary"/></td><td></td></tr>
                         <tr><td></td><td>
                             <asp:TextBox ID="metaresulttbox" runat="server" CssClass="form-control" Rows="5" TextMode="MultiLine"></asp:TextBox></td><td></td></tr>
                     </table>

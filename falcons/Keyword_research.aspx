@@ -129,6 +129,11 @@
 
                
             </div>
+
+            <div class="row">
+                <asp:Button ID="kwExtractorbtn" runat="server" Text="Button"  OnClick="kwExtractorbtn_Click" CssClass="btn btn-primary"/>
+                <asp:ListBox ID="editorKeywordsLbox" runat="server"></asp:ListBox>
+            </div>
          </ContentTemplate>
         <%--<Triggers>
             <asp:AsyncPostBackTrigger ControlID="Button1" EventName="Click" />
