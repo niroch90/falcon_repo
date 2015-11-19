@@ -69,7 +69,7 @@ $(".selectpicker").selectpicker();
             <div class="panel panel-default">
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-            <cc1:Editor ID="Editor1" runat="server" Height="330px" OnContentChanged="editor_content_load" />
+            <cc1:Editor ID="Editor1" runat="server" Height="530px" OnContentChanged="editor_content_load" />
             </ContentTemplate>
             <Triggers>
             <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick"/>

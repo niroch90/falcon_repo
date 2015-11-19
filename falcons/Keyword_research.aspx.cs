@@ -18,6 +18,7 @@ namespace falcons
 {
     public partial class Keyword_research : System.Web.UI.Page
     {
+        string importantWord;
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -39,13 +40,16 @@ namespace falcons
        //     // Save PageArrayList before the page is rendered.
        //Session["my_editor_content"] = (String)(editor_previous_content.Content);
        // }
-        protected void Keyword_research_button(object sender, EventArgs e)
+        protected void Keyword_research_button(object sender, EventArgs e )
         {
+            //string contentword=importantWord;
 
             if (searchEngineDW.SelectedValue == "1")
             {
                 GoogleSearch google_search = new GoogleSearch();
-                string userKeyword = TextBox2.Text;
+
+                string searchtboxValue=TextBox2.Text;
+                string userKeyword = (importantWord != null) ? importantWord : searchtboxValue;
                 CustomsearchService customSearchService = new CustomsearchService(new Google.Apis.Services.BaseClientService.Initializer() { ApiKey = google_search.apiKey });
                 Google.Apis.Customsearch.v1.CseResource.ListRequest listRequest = customSearchService.Cse.List(userKeyword);
                 listRequest.Cx = google_search.searchEngineId;
@@ -219,10 +223,10 @@ namespace falcons
                 }
 
             }
-
-            foreach(string keyword in keywordList)
+            List<string> noDuplicateKeys = keywordList.Distinct().ToList();
+            foreach (string keyword in noDuplicateKeys)
             {
-                  if(!keyword.EndsWith("ing") && !keyword.EndsWith("ed"))
+                  if(!keyword.EndsWith("ing") && !keyword.EndsWith("ed") && !keyword.Contains("nbsp"))
                   {
                       editorKeywordsLbox.Items.Add(keyword);
                   }
@@ -231,6 +235,13 @@ namespace falcons
 
 
         }
+    }
+
+    protected void editorKeywordsLbox_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        string lboxSelectedTxt = editorKeywordsLbox.SelectedValue.ToString();
+        importantWord = lboxSelectedTxt;
+        Keyword_research_button(sender,e);
     }
 
         //protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)

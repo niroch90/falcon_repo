@@ -8,7 +8,40 @@
         //]]>
 </script>
 <%--<div class="panel panel-default" style="width: 100%;">--%>
-            <div class="row" style="padding-bottom:10px">
+            
+              <div class="row">
+                  <div class="col-md-12">
+                 <div class="row" style="padding-bottom:10px;">
+                     <div class="col-md-12">
+                         <div class="text-warning ">
+                             Search Important Words in Content
+                         <asp:Button ID="kwExtractorbtn" runat="server" Text="Search"  OnClick="kwExtractorbtn_Click" CssClass="btn btn-primary pull-right"/>
+                         </div>
+                         
+                     </div>
+                     
+                 </div>
+                 <div class="row">
+                     <div class="col-md-12">
+
+<div class="panel panel-primary">
+                         <div class="panel-heading">
+                         Important Words in Content
+                         </div>
+                         <div class="panel-body">
+                              <asp:ListBox ID="editorKeywordsLbox" runat="server" CssClass="form-control" Height="125px" OnSelectedIndexChanged="editorKeywordsLbox_SelectedIndexChanged"></asp:ListBox>
+                         </div>
+                          </div>
+                     </div>
+                     
+                      
+                        </div> 
+                      </div>    
+              </div>
+    
+    
+    
+    <div class="row" style="padding-bottom:10px">
                  
                     <div class="col-md-9">
                         <div class="input-group">
@@ -130,10 +163,7 @@
                
             </div>
 
-            <div class="row">
-                <asp:Button ID="kwExtractorbtn" runat="server" Text="Button"  OnClick="kwExtractorbtn_Click" CssClass="btn btn-primary"/>
-                <asp:ListBox ID="editorKeywordsLbox" runat="server"></asp:ListBox>
-            </div>
+           
          </ContentTemplate>
         <%--<Triggers>
             <asp:AsyncPostBackTrigger ControlID="Button1" EventName="Click" />
