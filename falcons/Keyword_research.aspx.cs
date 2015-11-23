@@ -18,7 +18,7 @@ namespace falcons
 {
     public partial class Keyword_research : System.Web.UI.Page
     {
-        string importantWord;
+       // string importantWord;
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -32,7 +32,7 @@ namespace falcons
             }
 
      
-
+        //hi
        // void Page_PreRender(object sender, EventArgs e)
        // {
        //AjaxControlToolkit.HTMLEditor.Editor editor_previous_content = (AjaxControlToolkit.HTMLEditor.Editor)Master.FindControl("editor1");
@@ -49,7 +49,7 @@ namespace falcons
                 GoogleSearch google_search = new GoogleSearch();
 
                 string searchtboxValue=TextBox2.Text;
-                string userKeyword = (importantWord != null) ? importantWord : searchtboxValue;
+                string userKeyword = searchtboxValue;
                 CustomsearchService customSearchService = new CustomsearchService(new Google.Apis.Services.BaseClientService.Initializer() { ApiKey = google_search.apiKey });
                 Google.Apis.Customsearch.v1.CseResource.ListRequest listRequest = customSearchService.Cse.List(userKeyword);
                 listRequest.Cx = google_search.searchEngineId;
@@ -164,85 +164,85 @@ namespace falcons
 
         }
 
-    protected void kwExtractorbtn_Click(object sender, EventArgs e)
-    {
-        AjaxControlToolkit.HTMLEditor.Editor master_editor_content = (AjaxControlToolkit.HTMLEditor.Editor)Master.FindControl("Editor1");
-        String editortext = master_editor_content.Content;
-        string cs = ConfigurationManager.ConnectionStrings["falcon_cs"].ConnectionString;
-        using (SqlConnection con = new SqlConnection(cs))
-        {
-            SqlDataAdapter sda = new SqlDataAdapter("SELECT word FROM StopWordsList", con);
+    //protected void kwExtractorbtn_Click(object sender, EventArgs e)
+    //{
+    //    AjaxControlToolkit.HTMLEditor.Editor master_editor_content = (AjaxControlToolkit.HTMLEditor.Editor)Master.FindControl("Editor1");
+    //    String editortext = master_editor_content.Content;
+    //    string cs = ConfigurationManager.ConnectionStrings["falcon_cs"].ConnectionString;
+    //    using (SqlConnection con = new SqlConnection(cs))
+    //    {
+    //        SqlDataAdapter sda = new SqlDataAdapter("SELECT word FROM StopWordsList", con);
 
-            //cmd.CommandText="SELECT word FROM StopWordsList";
-            //cmd.CommandType=System.Data.CommandType.Text;
+    //        //cmd.CommandText="SELECT word FROM StopWordsList";
+    //        //cmd.CommandType=System.Data.CommandType.Text;
 
-            //cmd.ExecuteNonQuery();
-            DataSet ds = new DataSet();
-            sda.Fill(ds, "StopWordsList");
-            List<string> stopwords = new List<string>();
-            foreach (DataRow row in ds.Tables["StopWordsList"].Rows)
-            {
-                stopwords.Add(row["word"].ToString());
-            }
-
-
-            HashSet<string> stopWords = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-            string[] lines = stopwords.ToArray();
-            foreach (string s in lines)
-            {
-                stopWords.Add(s); // Assuming that each line contains one stop word.
-            }
-            HtmlDocument doc = new HtmlDocument();
-            doc.LoadHtml(master_editor_content.Content);
-            var root = doc.DocumentNode;
-            var sb = new StringBuilder();
-            //DescendantNodesAndSelf()
-            foreach (var node in root.DescendantNodesAndSelf())
-            {
-                if (!node.HasChildNodes)
-                {
-                    string text = node.InnerText;
-                    if (!string.IsNullOrEmpty(text))
-                        sb.AppendLine(text.Trim());
-                }
-            }
-            string[] editorWords = sb.ToString().Split(' ');
-            List<string> keywordList = new List<string>();
-            foreach(string word in editorWords)
-            {
-                MatchCollection matches = Regex.Matches(word, "[a-z]([:']?[a-z])*",
-                                        RegexOptions.IgnoreCase);
-                foreach (Match match in matches)
-                {
-                    if (!stopWords.Contains(match.Value))
-                    {
-                        keywordList.Add(match.Value);
-                       // editorKeywordsLbox.Items.Add(match.Value);
-                        //ProcessKeyword(match.Value); // Do whatever you need to do here
-                    }
-                }
-
-            }
-            List<string> noDuplicateKeys = keywordList.Distinct().ToList();
-            foreach (string keyword in noDuplicateKeys)
-            {
-                  if(!keyword.EndsWith("ing") && !keyword.EndsWith("ed") && !keyword.Contains("nbsp"))
-                  {
-                      editorKeywordsLbox.Items.Add(keyword);
-                  }
-
-            }
+    //        //cmd.ExecuteNonQuery();
+    //        DataSet ds = new DataSet();
+    //        sda.Fill(ds, "StopWordsList");
+    //        List<string> stopwords = new List<string>();
+    //        foreach (DataRow row in ds.Tables["StopWordsList"].Rows)
+    //        {
+    //            stopwords.Add(row["word"].ToString());
+    //        }
 
 
-        }
-    }
+    //        HashSet<string> stopWords = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+    //        string[] lines = stopwords.ToArray();
+    //        foreach (string s in lines)
+    //        {
+    //            stopWords.Add(s); // Assuming that each line contains one stop word.
+    //        }
+    //        HtmlDocument doc = new HtmlDocument();
+    //        doc.LoadHtml(master_editor_content.Content);
+    //        var root = doc.DocumentNode;
+    //        var sb = new StringBuilder();
+    //        //DescendantNodesAndSelf()
+    //        foreach (var node in root.DescendantNodesAndSelf())
+    //        {
+    //            if (!node.HasChildNodes)
+    //            {
+    //                string text = node.InnerText;
+    //                if (!string.IsNullOrEmpty(text))
+    //                    sb.AppendLine(text.Trim());
+    //            }
+    //        }
+    //        string[] editorWords = sb.ToString().Split(' ');
+    //        List<string> keywordList = new List<string>();
+    //        foreach(string word in editorWords)
+    //        {
+    //            MatchCollection matches = Regex.Matches(word, "[a-z]([:']?[a-z])*",
+    //                                    RegexOptions.IgnoreCase);
+    //            foreach (Match match in matches)
+    //            {
+    //                if (!stopWords.Contains(match.Value))
+    //                {
+    //                    keywordList.Add(match.Value);
+    //                   // editorKeywordsLbox.Items.Add(match.Value);
+    //                    //ProcessKeyword(match.Value); // Do whatever you need to do here
+    //                }
+    //            }
 
-    protected void editorKeywordsLbox_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        string lboxSelectedTxt = editorKeywordsLbox.SelectedValue.ToString();
-        importantWord = lboxSelectedTxt;
-        Keyword_research_button(sender,e);
-    }
+    //        }
+    //        List<string> noDuplicateKeys = keywordList.Distinct().ToList();
+    //        foreach (string keyword in noDuplicateKeys)
+    //        {
+    //              if(!keyword.EndsWith("ing") && !keyword.EndsWith("ed") && !keyword.Contains("nbsp"))
+    //              {
+    //                  editorKeywordsLbox.Items.Add(keyword);
+    //              }
+
+    //        }
+
+
+    //    }
+    //}
+
+    //protected void editorKeywordsLbox_SelectedIndexChanged(object sender, EventArgs e)
+    //{
+    //    string lboxSelectedTxt = editorKeywordsLbox.SelectedValue.ToString();
+    //    importantWord = lboxSelectedTxt;
+    //    Keyword_research_button(sender,e);
+    //}
 
         //protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         //{

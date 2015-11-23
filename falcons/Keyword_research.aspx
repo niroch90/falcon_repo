@@ -15,7 +15,7 @@
                      <div class="col-md-12">
                          <div class="text-warning ">
                              Search Important Words in Content
-                         <asp:Button ID="kwExtractorbtn" runat="server" Text="Search"  OnClick="kwExtractorbtn_Click" CssClass="btn btn-primary pull-right"/>
+                        <%-- <asp:Button ID="kwExtractorbtn" runat="server" Text="Search"  OnClick="kwExtractorbtn_Click" CssClass="btn btn-primary pull-right"/>--%>
                          </div>
                          
                      </div>
@@ -29,7 +29,8 @@
                          Important Words in Content
                          </div>
                          <div class="panel-body">
-                              <asp:ListBox ID="editorKeywordsLbox" runat="server" CssClass="form-control" Height="125px" OnSelectedIndexChanged="editorKeywordsLbox_SelectedIndexChanged" AutoPostBack="true"></asp:ListBox>
+                             <%-- OnSelectedIndexChanged="editorKeywordsLbox_SelectedIndexChanged" AutoPostBack="true"--%>
+                              <asp:ListBox ID="editorKeywordsLbox" runat="server" CssClass="form-control" Height="125px"></asp:ListBox>
                          </div>
                           </div>
                      </div>
