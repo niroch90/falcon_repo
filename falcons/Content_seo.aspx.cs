@@ -23,13 +23,13 @@ namespace falcons
 
            // Button1_Click();
         }
-        protected void Page_PreInit(object sender,EventArgs e)
-        {
-            // Create an event handler for the master page's contentCallEvent event
-            Master.contentCallEvent += new EventHandler(Button1_Click);
-        }
+        //protected void Page_PreInit(object sender,EventArgs e)
+        //{
+        //    // Create an event handler for the master page's contentCallEvent event
+        //    Master.contentCallEvent += new EventHandler(Button1_Click);
+        //}
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void ValidateBtnClick(object sender, EventArgs e)
         {
             AjaxControlToolkit.HTMLEditor.Editor master_editor_content = (AjaxControlToolkit.HTMLEditor.Editor)Master.FindControl("Editor1");
             //content_lable.Text = master_editor_content.Content;

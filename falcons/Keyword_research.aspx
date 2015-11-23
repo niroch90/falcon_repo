@@ -29,7 +29,7 @@
                          Important Words in Content
                          </div>
                          <div class="panel-body">
-                              <asp:ListBox ID="editorKeywordsLbox" runat="server" CssClass="form-control" Height="125px" OnSelectedIndexChanged="editorKeywordsLbox_SelectedIndexChanged"></asp:ListBox>
+                              <asp:ListBox ID="editorKeywordsLbox" runat="server" CssClass="form-control" Height="125px" OnSelectedIndexChanged="editorKeywordsLbox_SelectedIndexChanged" AutoPostBack="true"></asp:ListBox>
                          </div>
                           </div>
                      </div>
@@ -59,13 +59,13 @@
                     </div>
                      </div>
       
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <asp:UpdateProgress ID="UpdateProgress1" runat="server">
                 <ProgressTemplate>
                     <img src="images/loader.gif" runat="server"/>
                 </ProgressTemplate>
-                </asp:UpdateProgress>
+                </asp:UpdateProgress>--%>
             <div class="row">
                     <div class="col-md-12 ">
                         <div class="panel panel-primary">
@@ -76,23 +76,23 @@
                         </div>
                     </div>
                    </div>
-        </ContentTemplate>
+        <%--</ContentTemplate>--%>
         <%--<Triggers>
             <asp:AsyncPostBackTrigger ControlID="Button1" EventName="Click" />
         </Triggers>--%>
-    </asp:UpdatePanel>
+   <%-- </asp:UpdatePanel>--%>
      <%--    </div>--%>
 </asp:Content>
 
 
 <asp:Content runat="server" ContentPlaceHolderID="ContentPlaceHolder2">
-    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+    <%--<asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
             <asp:UpdateProgress ID="UpdateProgress2" runat="server">
                 <ProgressTemplate>
                     <img src="images/loader.gif" runat="server"/>
                 </ProgressTemplate>
-                </asp:UpdateProgress>
+                </asp:UpdateProgress>--%>
              <div class="row">
                     <div class="col-md-6">
                         <div class="panel panel-primary">
@@ -164,11 +164,11 @@
             </div>
 
            
-         </ContentTemplate>
+         <%--</ContentTemplate>--%>
         <%--<Triggers>
             <asp:AsyncPostBackTrigger ControlID="Button1" EventName="Click" />
         </Triggers>--%>
-    </asp:UpdatePanel>
+    <%--</asp:UpdatePanel>--%>
    </asp:Content>
 
     
