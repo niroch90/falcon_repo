@@ -148,6 +148,7 @@
   <ItemGroup>
     <Content Include="css\bootstrap-select.css" />
     <Content Include="css\bootstrap-select.min.css" />
+    <Content Include="css\BootstrapCollapsePanel.css" />
     <Content Include="css\boxMeterial.css" />
     <Content Include="css\Collapse.css" />
     <Content Include="css\GoogleSnippet.css" />

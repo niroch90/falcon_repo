@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using HtmlAgilityPack;
 using System.Data;
+using System.Web.UI.HtmlControls;
 
 namespace falcons
 {
@@ -24,16 +25,54 @@ namespace falcons
             html.LoadHtml(editorContent.Content);
             var nodes = html.DocumentNode.SelectNodes("//meta");
             DataTable dt = new DataTable();
-            foreach(var node in nodes){
-                if (node.Attributes["property"].Value != null || node.Attributes["content"].Value != null)
+            if(nodes!=null){
+                foreach (var node in nodes)
                 {
-                    string propertyValue = node.Attributes["property"].Value;
-                    string contentvalue = node.Attributes["content"].Value;
-                    socialLbox.Items.Add(propertyValue+Environment.NewLine);
-                    socialLbox.Items.Add(contentvalue);
+                    if (node.Attributes["property"].Value != null || node.Attributes["content"].Value != null)
+                    {
+                        string propertyValue = node.Attributes["property"].Value;
+                        string contentvalue = node.Attributes["content"].Value;
+                        socialLbox.Items.Add(propertyValue + Environment.NewLine);
+                        socialLbox.Items.Add(contentvalue);
 
+                    }
+                    else
+                    {
+                        socialLbox.Items.Add("No Og Tags Found!!!!" + Environment.NewLine + "Use Our Tool To Generate Og Tag...");
+                    }
                 }
             }
+
+            else
+            {
+
+                socialLbox.Items.Add("No Meta Tags Found!!!!");
+                socialLbox.Items.Add("Use Our Tool To Generate Meta Tag...");
+            }
+            
+
+        }
+
+        [System.Web.Services.WebMethod]
+        public string GenerateOGTags(string title,string type,string url,string image)
+        {
+           HtmlMeta ogTitle=new HtmlMeta();
+           HtmlMeta ogType = new HtmlMeta();
+           HtmlMeta ogUrl = new HtmlMeta();
+           HtmlMeta ogImage = new HtmlMeta();
+
+           ogTitle.Attributes.Add("property", "og:title");
+           ogTitle.Content = title;
+           ogType.Attributes.Add("property", "og:type");
+           ogType.Content = type;
+           ogUrl.Attributes.Add("property", "og:url");
+           ogUrl.Content = url;
+           ogImage.Attributes.Add("property", "og:image");
+           ogImage.Content = image;
+
+           String ogTags = ogTitle + Environment.NewLine + ogType + Environment.NewLine + ogUrl + Environment.NewLine + ogImage;
+
+           return ogTags;
 
         }
     }
