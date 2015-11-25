@@ -4,9 +4,10 @@
 
 <asp:Content runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.5/themes/redmond/jquery-ui.css" />
+<script type="text/javascript"   src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+<%--<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.5/themes/redmond/jquery-ui.css" />--%>
 <link href="css/Collapse.css" rel="stylesheet" />
+<link href="css/GoogleSnippet.css" rel="stylesheet" />
 <script type="text/javascript">
         //<![CDATA[
      Sys.Application.add_load(function set_cursor () {
@@ -14,6 +15,44 @@
     });
         //]]>
 </script>
+    <script type="text/javascript">
+       
+            function titlereset() {
+                $mystring = $('#gheading').val();
+                if ($mystring.length == 0) {
+                    $('#gheading').val('This is an Example of a Title Tag that is Seventy Characters in Length');
+                }
+            }
+        
+            
+            
+        
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#TitleTarea').keyup(function () {
+                $('#gheading').text($(this).val());
+                
+         })
+        });
+           
+        </script>
+     <script type="text/javascript">
+         $(document).ready(function () {
+             $('#DesTbox').keyup(function () {
+                 $('#gdescription').text($(this).val());
+             })
+         });
+
+        </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#UrlTarea').keyup(function () {
+                $('#gurl').text($(this).val());
+            })
+        });
+
+        </script>
    
    <%-- <script type="text/javascript">
         var editorControl = document.getElementById('<%=Master.FindControl("Editor1").ClientID %>');
@@ -268,7 +307,51 @@
             </div>
           </div>
 
-        <div class="row">
+        
+        
+    <div class="row">
+       <div class=" col-xs-12 ">
+<div class="panel panel-danger">
+<div class="panel-heading">
+            Google Snippet View Checker
+        </div>
+        <div class="panel-body">
+<div class="container">
+           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="row">
+                    <table class="table ">
+                    <tr><td class="col-md-4">Title </td><td class="col-md-4">70</td></tr>
+                    <tr><td class="col-xs-12"><textarea id="TitleTarea" class="form-control"  rows="2" onblur="titlereset()"></textarea></td></tr>
+                    <tr><td class="col-md-4">Description</td><td class="col-md-4">156</td></tr>
+                    <tr><td class="col-xs-12"><textarea id="DesTbox" class="form-control" rows="2"></textarea></td></tr>
+                    <tr><td class="col-md-4">Url</td><td class="col-md-4"></td></tr>
+                    <tr><td class="col-xs-12"><textarea id="UrlTarea" class="form-control"  rows="1"></textarea></td></tr>
+                </table>
+                </div>
+            </div>
+                
+           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+               <div class="panel-danger">
+                   <div class="panel-heading">
+                       Google Snippet View
+                   </div>
+                   <div class="panel-body">
+                       <div><span id="gheading" class="googletitle">This is an Example of a Title Tag that is Seventy Characters in Length</span></div>
+                       <div><span id="gurl" class="googleurl">http://localhost:3044/Content_seo.aspx</span></div>
+                       <div><span id="gdescription" class="googledescription">Here is an example of what a snippet looks like in Google's SERPs. The content that appears here is usually taken from the Meta Description tag if relevant.</span></div>
+                   </div>
+               </div>
+           </div>
+          </div>
+        </div>
+        </div>
+       </div>
+        
+        
+       
+        </div>
+
+    <div class="row">
             
             <div class="col-md-6">
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -291,7 +374,5 @@
                 </asp:UpdatePanel>
             </div>
         </div>
-        
-
         
 </asp:Content>
