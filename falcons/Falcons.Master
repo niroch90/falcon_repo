@@ -29,7 +29,7 @@ $(".selectpicker").selectpicker();
         <link href="css/boxMeterial.css" rel="stylesheet" />
         <link href="css/ihover.css" rel="stylesheet" />
         <script src="js/npm.js"></script>
-        <script src="js/jquery-1.11.3.min.js"></script>
+       <script src="js/jquery-1.11.3.min.js"></script>
         
         <link href="css/bootstrap-theme.css" rel="stylesheet" />
         <script src="js/bootstrap.min.js"></script>
@@ -37,10 +37,11 @@ $(".selectpicker").selectpicker();
     <link href="css/bootstrap.css" rel="stylesheet" />
         <link href="css/bootstrap.min.css" rel="stylesheet" />
         <link href="css/bootstrap-select.css" rel="stylesheet" />
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
        <%-- <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>--%>
-  
+    <script src="js/AjaxogCall.js"></script>
 <title>my page</title>
+   
 </head>
 <body style="width:100%;padding-bottom:20px;">
     <form id="form1" runat="server">

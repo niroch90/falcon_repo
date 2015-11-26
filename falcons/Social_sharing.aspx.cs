@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using HtmlAgilityPack;
 using System.Data;
 using System.Web.UI.HtmlControls;
+using System.Web.Services;
+using System.Web.Script.Services;
 
 namespace falcons
 {
@@ -53,26 +55,32 @@ namespace falcons
 
         }
 
-        [System.Web.Services.WebMethod]
-        public string GenerateOGTags(string title,string type,string url,string image)
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false)]
+        public static string GenerateOGTags(string title,string type,string url,string image)
         {
-           HtmlMeta ogTitle=new HtmlMeta();
-           HtmlMeta ogType = new HtmlMeta();
-           HtmlMeta ogUrl = new HtmlMeta();
-           HtmlMeta ogImage = new HtmlMeta();
+           //HtmlMeta ogTitle=new HtmlMeta();
+           //HtmlMeta ogType = new HtmlMeta();
+           //HtmlMeta ogUrl = new HtmlMeta();
+           //HtmlMeta ogImage = new HtmlMeta();
 
-           ogTitle.Attributes.Add("property", "og:title");
-           ogTitle.Content = title;
-           ogType.Attributes.Add("property", "og:type");
-           ogType.Content = type;
-           ogUrl.Attributes.Add("property", "og:url");
-           ogUrl.Content = url;
-           ogImage.Attributes.Add("property", "og:image");
-           ogImage.Content = image;
+           //ogTitle.Attributes.Add("property", "og:title");
+           //ogTitle.Content = title;
+           //ogType.Attributes.Add("property", "og:type");
+           //ogType.Content = type;
+           //ogUrl.Attributes.Add("property", "og:url");
+           //ogUrl.Content = url;
+           //ogImage.Attributes.Add("property", "og:image");
+           //ogImage.Content = image;
+
+            string ogTitle=@"<meta property=""og:title"" content="+title+" />";
+            string ogType=@"<meta property=""og:type"" content="+type+" />";
+            string ogUrl = @"<meta property=""og:url"" content=" + url + " />";
+            string ogImage = @"<meta property=""og:image"" content=" + image + " />";
 
            String ogTags = ogTitle + Environment.NewLine + ogType + Environment.NewLine + ogUrl + Environment.NewLine + ogImage;
 
-           return ogTags;
+           return ogTags ;
 
         }
     }
