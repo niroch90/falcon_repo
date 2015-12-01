@@ -159,7 +159,9 @@
     <Content Include="css\jquery-ui.structure.min.css" />
     <Content Include="css\jquery-ui.theme.css" />
     <Content Include="css\jquery-ui.theme.min.css" />
+    <Content Include="css\TitleBox.css" />
     <Content Include="external\jquery\jquery.js" />
+    <Content Include="FalconsService.asmx" />
     <Content Include="images\loader.gif" />
     <Content Include="images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
     <Content Include="images\ui-bg_diagonals-thick_20_666666_40x40.png" />
@@ -187,6 +189,7 @@
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery-1.11.3.min.js" />
     <Content Include="js\npm.js" />
+    <Content Include="js\SaveToSession.js" />
     <Content Include="packages.config" />
     <Content Include="css\bootstrap-theme.css.map" />
     <Content Include="css\bootstrap.css.map" />
@@ -208,6 +211,7 @@
     </None>
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="StopWords\stopwords.txt" />
     <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>
@@ -234,6 +238,10 @@
     </Compile>
     <Compile Include="Falcons.Master.designer.cs">
       <DependentUpon>Falcons.Master</DependentUpon>
+    </Compile>
+    <Compile Include="FalconsService.asmx.cs">
+      <DependentUpon>FalconsService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="GoogleSearch.cs" />
     <Compile Include="Image_seo.aspx.cs">

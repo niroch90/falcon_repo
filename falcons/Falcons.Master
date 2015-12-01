@@ -7,22 +7,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <script type="text/javascript">
-$(document).ready(function () {
-$(".selectpicker").selectpicker();
-});
-         //cursor setting
+    $(document).ready(function () {
+        $(".selectpicker").selectpicker();
+    });
+    //cursor setting
 </script>
     
-  
+ <%-- <script type="text/javascript">
+      function callServer() {
+          FalconsService.SaveToSession($get("Editor1").value, displayMessageCallback);
+      }
+
+      function displayMessageCallback(result) {
+          $get("message").innerHTML = result;
+      }
+    </script>--%>
+
 <style type="text/css">
-.bootstrap-select > .dropdown-toggle {
-    width: auto !important;
-    padding-right: 25px;
-}
-.nopadding {
-   padding: 0 !important;
-   margin: 0 !important;
-}
+    .bootstrap-select > .dropdown-toggle {
+        width: auto !important;
+        padding-right: 25px;
+    }
+
+    .nopadding {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
 </style>
 
         <link href="css/SeoStyle.css" rel="stylesheet" />
@@ -30,7 +40,7 @@ $(".selectpicker").selectpicker();
         <link href="css/ihover.css" rel="stylesheet" />
         <script src="js/npm.js"></script>
        <script src="js/jquery-1.11.3.min.js"></script>
-        
+    <link href="css/TitleBox.css" rel="stylesheet" />
         <link href="css/bootstrap-theme.css" rel="stylesheet" />
         <script src="js/bootstrap.min.js"></script>
         <script src="js/bootstrap-select.js"></script>
@@ -40,11 +50,13 @@ $(".selectpicker").selectpicker();
        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
        <%-- <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>--%>
     <script src="js/AjaxogCall.js"></script>
+    <script src="js/SaveToSession.js"></script>
 <title>my page</title>
    
 </head>
 <body style="width:100%;padding-bottom:20px;">
     <form id="form1" runat="server">
+       
         <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false"/>
         <div style="overflow:hidden;">
         <div class="row" ">
@@ -63,19 +75,36 @@ $(".selectpicker").selectpicker();
         </div>
         </div>
         <div class="panel-default" style="padding-left:10px;padding-right:10px;">
+            
+ 
+
+            
         <div class="row" style="height:200px;">
             <div class="col-md-8">
-            <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></ajaxToolkit:ToolkitScriptManager>
-            <asp:Timer ID="Timer1" runat="server" Interval="10000" OnTick="Timer1_Tick"></asp:Timer>
+               
+            <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+                <Services>
+                    <asp:ServiceReference Path="~/FalconsService.asmx"/>
+                </Services>
+            </ajaxToolkit:ToolkitScriptManager>
+            <%--<asp:Timer ID="Timer1" runat="server" Interval="10000" OnTick="Timer1_Tick"></asp:Timer>--%>
             <div class="panel panel-default">
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-            <ContentTemplate>
+                
+        <div class="input-group" style="padding-left:5px;padding-bottom:5px;padding-top:5px;padding-right:5px;height:40px;">
+            <span class="input-group-addon primary" style="height:40px;">Title</span>
+            <input class="form-control"  id="ContentTitle" style="height:40px;"/>
+            
+        </div>
+    
+           <%-- <asp:UpdatePanel ID="UpdatePanel1" runat="server">--%>
+            <%--<ContentTemplate>--%>
+                 
             <cc1:Editor ID="Editor1" runat="server" Height="530px" OnContentChanged="editor_content_load" />
-            </ContentTemplate>
-            <Triggers>
+            <%--</ContentTemplate>--%>
+           <%-- <Triggers>
             <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick"/>
             </Triggers>
-            </asp:UpdatePanel>
+            </asp:UpdatePanel>--%>
             </div> 
             </div>
             <div class="col-md-4">

@@ -88,6 +88,17 @@ namespace falcons
 
         }
         public event EventHandler contentCallEvent;
+
+        //public string saveSessionVariables(string title)
+        //{
+            
+        //    string Titleboxval = title;
+        //    if(Editor_content!=null && Titleboxval!= null)
+        //    {
+        //        Session["editor_content"] = (String)(Editor1.Content);
+        //    }
+
+        //}
      
      }
 }
