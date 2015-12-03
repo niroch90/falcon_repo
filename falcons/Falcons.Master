@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Falcons.master.cs" Inherits="falcons.Falcons" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Falcons.master.cs" Inherits="falcons.Falcons"  %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit.HTMLEditor" TagPrefix="cc1" %>
 
@@ -82,7 +82,7 @@
         <div class="row" style="height:200px;">
             <div class="col-md-8">
                
-            <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+            <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"  >
                 <Services>
                     <asp:ServiceReference Path="~/FalconsService.asmx"/>
                 </Services>
@@ -99,7 +99,8 @@
            <%-- <asp:UpdatePanel ID="UpdatePanel1" runat="server">--%>
             <%--<ContentTemplate>--%>
                  
-            <cc1:Editor ID="Editor1" runat="server" Height="530px" OnContentChanged="editor_content_load" />
+            <cc1:Editor ID="Editor1" runat="server" Height="530px"  />
+               <%-- OnContentChanged="editor_content_load"--%>
             <%--</ContentTemplate>--%>
            <%-- <Triggers>
             <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick"/>

@@ -76,11 +76,11 @@ namespace falcons
         }
         
 
-        protected void Timer1_Tick(object sender, EventArgs e)
-        {
-            Session["editor_content"] = (String)(Editor1.Content);
+        //protected void Timer1_Tick(object sender, EventArgs e)
+        //{
+        //    Session["editor_content"] = (String)(Editor1.Content);
            
-        }
+        //}
         protected void editor_content_load(object sender, EventArgs e)
         {
             if (contentCallEvent != null)

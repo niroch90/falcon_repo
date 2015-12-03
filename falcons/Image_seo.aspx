@@ -10,10 +10,40 @@
 </script>
     <div>
      <!-- Image SEO Tab-->
-                    <div role="tabpanel" class="tab-pane" id="imageseo">
-                        <div class="row">
+                    <div class="row">
+                        <div>
+                           <%-- <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                <ContentTemplate>--%>
+                                <div class="panel panel-default">
+                                <div class="panel-heading">Check Image tags
+                                    <div>
+                                        <asp:Button ID="ImageCheckBtn" runat="server" Text="Button" OnClick="ImageCheckBtn_Click" CssClass="btn btn-default"/></div></div>
+                                <div class="panel-body">
+                                    <asp:ListBox ID="Imagelbox" runat="server" CssClass="form-control" OnSelectedIndexChanged="Imagelbox_SelectedIndexChanged" AutoPostBack="true"  ></asp:ListBox>
+                                </div>
+                            </div>
+                                     <div id="imgDetailspanel" class="panel panel-default" runat="server">
+                                <div class="panel-body" runat="server">
+                                 <table runat="server">
+                                     <tr><td>Src Link</td><td>
+                                         <asp:Label ID="srclabel" runat="server" ></asp:Label></td></tr>
+                                     <tr><td>Alter Description</td><td>
+                                         <asp:Label ID="altlabel" runat="server" ></asp:Label></td></tr>
+                                     <tr><td>Image Width</td><td>
+                                         <asp:Label ID="imgwidthlabel" runat="server" ></asp:Label></td></tr>
+                                     <tr><td>Image Height</td><td>
+                                         <asp:Label ID="imgheightlabel" runat="server" ></asp:Label></td></tr>
+                                 </table>   
+                                </div>
+                             </div>
+                                <%--</ContentTemplate>
+                                <Triggers>
+                                    <asp:AsyncPostBackTrigger ControlID="ImageCheckBtn" EventName="Click" />
+                                    <asp:AsyncPostBackTrigger ControlID="Imagelbox" EventName="SelectedIndexChanged"  />
+                                </Triggers>
+                            </asp:UpdatePanel>--%>
                            
-                        </div>
+                         </div>
                     </div>
     </div>
 </asp:Content>
