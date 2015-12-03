@@ -164,8 +164,8 @@ namespace falcons
 
 
         }
-
-    protected void kwExtractorbtn_Click(object sender, EventArgs e)
+   
+    public void kwExtractorbtn_Click(object sender, EventArgs e)
     {
         AjaxControlToolkit.HTMLEditor.Editor master_editor_content = (AjaxControlToolkit.HTMLEditor.Editor)Master.FindControl("Editor1");
         String editortext = master_editor_content.Content;
@@ -293,8 +293,24 @@ namespace falcons
         DataTable keywordt = new DataTable();
         keywordt.Columns.Add("keyword", typeof(string));
         keywordt.Columns.Add("count", typeof(int));
-        int count=0;
+        keywordt.Columns.Add("position", typeof(int));
+        keywordt.Columns.Add("titleaval", typeof(string));
+        string contentTitle = (string)(Session["content_title"]);
+        string[] titlewrdArray = contentTitle.Split(' ');
         foreach(string keyword in keywordfinal){
+            int count = 0;
+            string valueavailability;
+            int posiionofthekeyword = Array.IndexOf(editorWords,keyword);
+            int titleposotionkwrd = Array.IndexOf(titlewrdArray,keyword);
+            if (titleposotionkwrd > -1)
+            {
+                valueavailability = "yes";  
+            }
+            else
+            {
+                valueavailability = "no";
+            }
+
             foreach(string editorword in editorWords)
             {
                 if(keyword== editorword)
@@ -303,7 +319,8 @@ namespace falcons
                 }
             }
 
-            keywordt.Rows.Add(keyword,count);
+            keywordt.Rows.Add(keyword,count,posiionofthekeyword,valueavailability);
+
         }
 
         keywordt.DefaultView.Sort="count DESC";
@@ -313,11 +330,28 @@ namespace falcons
         {
             editorKeywordsLbox.Items.Add(row[0].ToString());
         }
+        //getLoadedDatatable(keywordt);
+        Session.Add("keyworddt", keywordt);
     }
 
+    //public void getLoadedDatatable(DataTable dtloaded)
+    //{
+    //    DataTable loadedDt = dtloaded;
+        
+    //}
     protected void editorKeywordsLbox_SelectedIndexChanged(object sender, EventArgs e)
     {
+        DataTable lastloadeddt = Session["keyworddt"] as DataTable;
         string lboxSelectedTxt = editorKeywordsLbox.SelectedValue.ToString();
+        DataRow foundkeyword = lastloadeddt.Select("keyword ='"+lboxSelectedTxt+"'").First();
+        keywrdnamelbl.Text = "Selected word Name:" + lboxSelectedTxt;
+        
+            keywrdcountlbl.Text = foundkeyword[1].ToString();
+        
+        
+        
+       
+
         importantWord = lboxSelectedTxt;
         Keyword_research_button(sender,e);
     }

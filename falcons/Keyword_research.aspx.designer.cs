@@ -31,6 +31,42 @@ namespace falcons {
         protected global::System.Web.UI.WebControls.ListBox editorKeywordsLbox;
         
         /// <summary>
+        /// keywrdnamelbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label keywrdnamelbl;
+        
+        /// <summary>
+        /// keywrdcountlbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label keywrdcountlbl;
+        
+        /// <summary>
+        /// keywordpos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label keywordpos;
+        
+        /// <summary>
+        /// titleappeatlbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label titleappeatlbl;
+        
+        /// <summary>
         /// TextBox2 control.
         /// </summary>
         /// <remarks>
@@ -67,15 +103,6 @@ namespace falcons {
         protected global::System.Web.UI.WebControls.ListBox TitleListBox;
         
         /// <summary>
-        /// ContentListBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ContentListBox;
-        
-        /// <summary>
         /// UrlListBox control.
         /// </summary>
         /// <remarks>
@@ -83,6 +110,15 @@ namespace falcons {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox UrlListBox;
+        
+        /// <summary>
+        /// ContentListBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox ContentListBox;
         
         /// <summary>
         /// Repeater1 control.

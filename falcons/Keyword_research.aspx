@@ -9,98 +9,102 @@
 </script>
 <%--<div class="panel panel-default" style="width: 100%;">--%>
             
-              <div class="row">
-                  <div class="col-md-12">
-                 <div class="row" style="padding-bottom:10px;">
-                     <div class="col-md-12">
-                         <div class="text-warning ">
-                             Search Important Words in Content
-                         <asp:Button ID="kwExtractorbtn" runat="server" Text="Search"  OnClick="kwExtractorbtn_Click" CssClass="btn btn-primary pull-right"/>
-                         </div>
-                         
-                     </div>
-                     
-                 </div>
-                 <div class="row">
-                     <div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row" style="padding-bottom: 10px;">
+                <div class="col-md-12">
+                    <div class="text-warning ">
+                        Search Important Words in Content
+                         <asp:Button ID="kwExtractorbtn" runat="server" Text="Search" OnClick="kwExtractorbtn_Click" CssClass="btn btn-primary pull-right" />
+                    </div>
 
-<div class="panel panel-primary">
-                         <div class="panel-heading">
-                         Important Words in Content
-                         </div>
-                         <div class="panel-body">
-                              <asp:ListBox ID="editorKeywordsLbox" runat="server" CssClass="form-control" Height="125px" OnSelectedIndexChanged="editorKeywordsLbox_SelectedIndexChanged" AutoPostBack="true"></asp:ListBox>
-                         </div>
-                          </div>
-                     </div>
-                     
-                      
-                        </div> 
-                      </div>    
-              </div>
-    
-    
-    
-    <div class="row" style="padding-bottom:10px">
-                 
-                    <div class="col-md-9">
-                        <div class="input-group">
-                            <asp:TextBox ID="TextBox2" runat="server" placeholder="Enter Text To Search Keywords" CssClass="form-control"></asp:TextBox>
-                            <span class="input-group-btn">
-                                <asp:Button ID="Button1" runat="server" Text="Search" OnClick="Keyword_research_button" CssClass="btn btn-primary" /></span>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Important Words in Content
+                        </div>
+                        <div class="panel-body">
+                            <asp:ListBox ID="editorKeywordsLbox" runat="server" CssClass="form-control" Height="125px" OnSelectedIndexChanged="editorKeywordsLbox_SelectedIndexChanged" AutoPostBack="true"></asp:ListBox>
                         </div>
                     </div>
-                    <div class="col-md-3 nopadding">
-                        
-                        <asp:DropDownList ID="searchEngineDW" runat="server" CssClass="selectpicker" data-style="btn-danger" OnSelectedIndexChanged="Keyword_research_button" AutoPostBack="true" >
-                            <asp:ListItem Value="1">Google</asp:ListItem>
-                            <asp:ListItem Value="2">Bing</asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
-                     </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <%--<div class="row" style="padding-bottom:10px">
+                 
+                    
+                     </div>--%>
       
-    <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
-        <ContentTemplate>
-            <asp:UpdateProgress ID="UpdateProgress1" runat="server">
-                <ProgressTemplate>
-                    <img src="images/loader.gif" runat="server"/>
-                </ProgressTemplate>
-                </asp:UpdateProgress>--%>
-            <div class="row">
+   
+                <div class="row">
                     <div class="col-md-12 ">
                         <div class="panel panel-primary">
+                            <div class="panel-heading">Word Details</div>
+                            <div class="panel-body">
+                                <table>
+                                    <tr><td>
+                                        <asp:Label ID="keywrdnamelbl" runat="server" ></asp:Label></td></tr>
+                                    <tr><td>
+                                        <asp:Label ID="keywrdcountlbl" runat="server" ></asp:Label></td></tr>
+                                    <tr><td>
+                                        <asp:Label ID="keywordpos" runat="server" ></asp:Label></td></tr>
+                                    <tr><td>
+                                        <asp:Label ID="titleappeatlbl" runat="server" ></asp:Label></td></tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+       </asp:Content>
+
+
+<asp:Content runat="server" ContentPlaceHolderID="ContentPlaceHolder2">
+    <div class="row">
+        <div class="col-md-12">
+  <div class="panel panel-default">
+            <div class="panel-body">
+ 
+            <div class="col-md-10">
+                <div class="input-group">
+                    <asp:TextBox ID="TextBox2" runat="server" placeholder="Enter Text To Search Keywords" CssClass="form-control"></asp:TextBox>
+                    <span class="input-group-btn">
+                        <asp:Button ID="Button1" runat="server" Text="Search" OnClick="Keyword_research_button" CssClass="btn btn-primary" /></span>
+                </div>
+            </div>
+            <div class="col-md-2 nopadding">
+
+                <asp:DropDownList ID="searchEngineDW" runat="server" CssClass="selectpicker" data-style="btn-danger" OnSelectedIndexChanged="Keyword_research_button" AutoPostBack="true">
+                    <asp:ListItem Value="1">Google</asp:ListItem>
+                    <asp:ListItem Value="2">Bing</asp:ListItem>
+                </asp:DropDownList>
+            </div>
+        
+            </div>
+        </div>
+        </div>
+      
+       
+    </div>
+
+    <div class="row">
+                    <div class="col-md-6">
+                      <div class="panel panel-primary">
                             <div class="panel-heading">Available Keywords</div>
                             <div class="panel-body">
                                 <asp:ListBox ID="TitleListBox" runat="server" CssClass="form-control" Style="height: 150px"></asp:ListBox>
                             </div>
-                        </div>
-                    </div>
-                   </div>
-        <%--</ContentTemplate>--%>
-        <%--<Triggers>
-            <asp:AsyncPostBackTrigger ControlID="Button1" EventName="Click" />
-        </Triggers>--%>
-   <%-- </asp:UpdatePanel>--%>
-     <%--    </div>--%>
-</asp:Content>
-
-
-<asp:Content runat="server" ContentPlaceHolderID="ContentPlaceHolder2">
-    <%--<asp:UpdatePanel ID="UpdatePanel2" runat="server">
-        <ContentTemplate>
-            <asp:UpdateProgress ID="UpdateProgress2" runat="server">
-                <ProgressTemplate>
-                    <img src="images/loader.gif" runat="server"/>
-                </ProgressTemplate>
-                </asp:UpdateProgress>--%>
-             <div class="row">
-                    <div class="col-md-6">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">Available Content</div>
-                            <div class="panel-body">
-                                <asp:ListBox ID="ContentListBox" runat="server" CssClass="form-control" Style="height: 150px" ></asp:ListBox>
-                            </div>
-                        </div>
+                        </div> 
                     </div>
            <div class="col-md-6 ">
                         <div class="panel panel-primary">
@@ -111,30 +115,19 @@
                         </div>
                     </div>
                  </div>
+    <div class="row">
+        <div class="col-md-12">
+ <div class="panel panel-primary">
+                            <div class="panel-heading">Available Content</div>
+                            <div class="panel-body">
+                                <asp:ListBox ID="ContentListBox" runat="server" CssClass="form-control" Style="height: 150px" ></asp:ListBox>
+                            </div>
+                        </div>
+        </div>
+    </div>
             <div class="row">
                 
                    <div class="col-md-12">
-                 <%--   <asp:GridView ID="GridView1" runat="server"  AutoGenerateColumns="false">
-                        
-                        <Columns>
-                            <asp:TemplateField>
-                                
-                               <ItemTemplate>
-                                   <table>
-                                       <tr>
-                                           <td>Image</td>
-                                           <td>Image Url</td>
-                                       </tr>
-                                       <tr>
-                                           <td style="width:300px;height:300px;"><asp:Image ID="Image2" runat="server"  ImageUrl='<%#Eval("imageUrl")%>' Width="300px" Height="300px"/></td>
-                                         <td style="width:600px;height:300px;"><%#Eval("imageUrl")%></td>
-                                       </tr>
-
-                                   </table>
-                                 </ItemTemplate>
-                              </asp:TemplateField>
-                        </Columns>
-                    </asp:GridView>--%>
                        <asp:Repeater ID="Repeater1" runat="server">
                            <HeaderTemplate>
                                <div class="panel panel-primary">
@@ -155,21 +148,10 @@
                                </table>
                                </div>
                            </FooterTemplate>
-
-
-                       </asp:Repeater>
+                  </asp:Repeater>
                </div>
-
-               
-            </div>
-
-           
-         <%--</ContentTemplate>--%>
-        <%--<Triggers>
-            <asp:AsyncPostBackTrigger ControlID="Button1" EventName="Click" />
-        </Triggers>--%>
-    <%--</asp:UpdatePanel>--%>
-   </asp:Content>
+             </div>
+       </asp:Content>
 
     
         
