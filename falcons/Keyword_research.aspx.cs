@@ -279,15 +279,40 @@ namespace falcons
         }
         // we used RegeX for this operation
         List<string> noDuplicateKeys = keywordList.Distinct().ToList();
+        List<string> keywordfinal = new List<string>();
         foreach (string keyword in noDuplicateKeys)
         {
             if (!keyword.EndsWith("ing") && !keyword.EndsWith("ed") && !keyword.Contains("nbsp"))
             {
-                editorKeywordsLbox.Items.Add(keyword);
+                //editorKeywordsLbox.Items.Add(keyword);
+                keywordfinal.Add(keyword);
             }
 
         }
 
+        DataTable keywordt = new DataTable();
+        keywordt.Columns.Add("keyword", typeof(string));
+        keywordt.Columns.Add("count", typeof(int));
+        int count=0;
+        foreach(string keyword in keywordfinal){
+            foreach(string editorword in editorWords)
+            {
+                if(keyword== editorword)
+                {
+                    count = count + 1;
+                }
+            }
+
+            keywordt.Rows.Add(keyword,count);
+        }
+
+        keywordt.DefaultView.Sort="count DESC";
+        keywordt.DefaultView.ToTable();
+       
+        foreach(DataRow row in keywordt.Rows)
+        {
+            editorKeywordsLbox.Items.Add(row[0].ToString());
+        }
     }
 
     protected void editorKeywordsLbox_SelectedIndexChanged(object sender, EventArgs e)
