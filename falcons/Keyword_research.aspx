@@ -61,6 +61,8 @@
                                         <asp:Label ID="keywordpos" runat="server" ></asp:Label></td></tr>
                                     <tr><td>
                                         <asp:Label ID="titleappeatlbl" runat="server" ></asp:Label></td></tr>
+                                    <tr><td>
+                                        <asp:Label ID="kwrdDensitylbl" runat="server" Text="Label"></asp:Label></td></tr>
                                 </table>
                             </div>
                         </div>

@@ -164,7 +164,7 @@ namespace falcons
 
 
         }
-   
+   int countEditorwords;
     public void kwExtractorbtn_Click(object sender, EventArgs e)
     {
         AjaxControlToolkit.HTMLEditor.Editor master_editor_content = (AjaxControlToolkit.HTMLEditor.Editor)Master.FindControl("Editor1");
@@ -257,10 +257,14 @@ namespace falcons
             {
                 string text = node.InnerText;
                 if (!string.IsNullOrEmpty(text))
-                    sb.AppendLine(text.Trim());
+                    sb.AppendLine(Regex.Replace(text, @"\t|\n|\r|[|]|(|)|{|}", ""));
+                    //sb.AppendLine(text.Trim(new char[] { ' ', '\t', '\n', '\r', '[', ']', '(', ')', '{', '}' }));
             }
         }
-        string[] editorWords = sb.ToString().Split(' ');
+        
+        string[] editorWords = sb.ToString().Split(new Char [] {',' , '\n',' ','\r',';'} );
+        var editorarraylist = from s in editorWords select s;
+        countEditorwords = editorarraylist.Count();
         List<string> keywordList = new List<string>();
         foreach (string word in editorWords)
         {
@@ -282,7 +286,7 @@ namespace falcons
         List<string> keywordfinal = new List<string>();
         foreach (string keyword in noDuplicateKeys)
         {
-            if (!keyword.EndsWith("ing") && !keyword.EndsWith("ed") && !keyword.Contains("nbsp"))
+            if (!keyword.EndsWith("ing") && !keyword.EndsWith("ed") && !keyword.Contains("&nbsp") && (keyword != null) && (keyword.Count(char.IsLetter)>=3))
             {
                 //editorKeywordsLbox.Items.Add(keyword);
                 keywordfinal.Add(keyword);
@@ -296,7 +300,15 @@ namespace falcons
         keywordt.Columns.Add("position", typeof(int));
         keywordt.Columns.Add("titleaval", typeof(string));
         string contentTitle = (string)(Session["content_title"]);
-        string[] titlewrdArray = contentTitle.Split(' ');
+      string[] titlewrdArray=new string[100];
+        if(contentTitle!=null)
+        {
+             titlewrdArray =contentTitle.Split(' ');
+        }
+        
+            
+        
+        
         foreach(string keyword in keywordfinal){
             int count = 0;
             string valueavailability;
@@ -313,7 +325,7 @@ namespace falcons
 
             foreach(string editorword in editorWords)
             {
-                if(keyword== editorword)
+                if(editorword.Contains(keyword)==true)
                 {
                     count = count + 1;
                 }
@@ -347,11 +359,12 @@ namespace falcons
         keywrdnamelbl.Text = "Selected word Name:" + lboxSelectedTxt;
         
             keywrdcountlbl.Text = foundkeyword[1].ToString();
-        
-        
-        
-       
 
+
+            int ewordsCount = countEditorwords;
+            int keywordcountinContent =(int) (foundkeyword[1]);
+            int kwordDensity = (keywordcountinContent / ewordsCount) * 100;
+            kwrdDensitylbl.Text = kwordDensity.ToString();
         importantWord = lboxSelectedTxt;
         Keyword_research_button(sender,e);
     }
