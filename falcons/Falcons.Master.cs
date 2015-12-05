@@ -15,7 +15,7 @@ namespace falcons
         protected override void OnInit(EventArgs e)
         {
             Editor1.Content=(String)(Session["editor_content"]);
-        
+            ContentTitle.Value = (string)(Session["content_title"]);
             
           
         }

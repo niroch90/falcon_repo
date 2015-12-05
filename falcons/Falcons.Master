@@ -92,7 +92,7 @@
                 
         <div class="input-group" style="padding-left:5px;padding-bottom:5px;padding-top:5px;padding-right:5px;height:40px;">
             <span class="input-group-addon primary" style="height:40px;">Title</span>
-            <input class="form-control"  id="ContentTitle" style="height:40px;"/>
+            <input class="form-control"  id="ContentTitle" style="height:40px;" runat="server"/>
             
         </div>
     

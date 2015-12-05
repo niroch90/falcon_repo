@@ -21,7 +21,7 @@
                 </div>
 
             </div>
-            <div class="row">
+            <div class="row" >
                 <div class="col-md-12">
 
                     <div class="panel panel-primary">
@@ -47,22 +47,24 @@
                      </div>--%>
       
    
-                <div class="row">
+                <div class="row" id="worddtlRow" runat="server">
                     <div class="col-md-12 ">
                         <div class="panel panel-primary">
                             <div class="panel-heading">Word Details</div>
                             <div class="panel-body">
-                                <table>
-                                    <tr><td>
+                                <table class="table table-responsive">
+                                    <tr><td>Name of the keyword:</td><td>
                                         <asp:Label ID="keywrdnamelbl" runat="server" ></asp:Label></td></tr>
-                                    <tr><td>
+                                    <tr><td>Keyword count:</td><td>
                                         <asp:Label ID="keywrdcountlbl" runat="server" ></asp:Label></td></tr>
-                                    <tr><td>
+                                    <tr><td>Keyword Position:</td><td>
                                         <asp:Label ID="keywordpos" runat="server" ></asp:Label></td></tr>
-                                    <tr><td>
+                                    <tr><td>Title related:</td><td>
                                         <asp:Label ID="titleappeatlbl" runat="server" ></asp:Label></td></tr>
-                                    <tr><td>
-                                        <asp:Label ID="kwrdDensitylbl" runat="server" Text="Label"></asp:Label></td></tr>
+                                    <tr><td>Keyword Density</td><td>
+                                        <asp:Label ID="kwrdDensitylbl" runat="server" ></asp:Label></td></tr>
+                                    <tr><td>Keyword value:</td><td>
+                                        <asp:Label ID="keyValuelbl" runat="server" ></asp:Label></td></tr>
                                 </table>
                             </div>
                         </div>
@@ -104,7 +106,8 @@
                       <div class="panel panel-primary">
                             <div class="panel-heading">Available Keywords</div>
                             <div class="panel-body">
-                                <asp:ListBox ID="TitleListBox" runat="server" CssClass="form-control" Style="height: 150px"></asp:ListBox>
+                                <asp:TextBox ID="keywordtbox" runat="server" TextMode="MultiLine" CssClass="form-control" Height="100px"></asp:TextBox>
+                                <%--<asp:ListBox ID="TitleListBox" runat="server" CssClass="form-control" Style="height: 150px"></asp:ListBox>--%>
                             </div>
                         </div> 
                     </div>
@@ -112,7 +115,8 @@
                         <div class="panel panel-primary">
                             <div class="panel-heading">Available URLs</div>
                             <div class="panel-body">
-                                <asp:ListBox ID="UrlListBox" runat="server" CssClass="form-control" Style="height: 150px"></asp:ListBox>
+                                <asp:TextBox ID="urltbox" runat="server" TextMode="MultiLine" CssClass="form-control" Height="100px"></asp:TextBox>
+                                <%--<asp:ListBox ID="UrlListBox" runat="server" CssClass="form-control" Style="height: 150px"></asp:ListBox>--%>
                             </div>
                         </div>
                     </div>
@@ -122,7 +126,8 @@
  <div class="panel panel-primary">
                             <div class="panel-heading">Available Content</div>
                             <div class="panel-body">
-                                <asp:ListBox ID="ContentListBox" runat="server" CssClass="form-control" Style="height: 150px" ></asp:ListBox>
+                                <asp:TextBox ID="contenttbox" runat="server" TextMode="MultiLine" CssClass="form-control" Height="100px"></asp:TextBox>
+                                <%--<asp:ListBox ID="ContentListBox" runat="server" CssClass="form-control" Style="height: 150px" ></asp:ListBox>--%>
                             </div>
                         </div>
         </div>

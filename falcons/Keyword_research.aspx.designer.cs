@@ -31,6 +31,15 @@ namespace falcons {
         protected global::System.Web.UI.WebControls.ListBox editorKeywordsLbox;
         
         /// <summary>
+        /// worddtlRow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl worddtlRow;
+        
+        /// <summary>
         /// keywrdnamelbl control.
         /// </summary>
         /// <remarks>
@@ -76,6 +85,15 @@ namespace falcons {
         protected global::System.Web.UI.WebControls.Label kwrdDensitylbl;
         
         /// <summary>
+        /// keyValuelbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label keyValuelbl;
+        
+        /// <summary>
         /// TextBox2 control.
         /// </summary>
         /// <remarks>
@@ -103,31 +121,31 @@ namespace falcons {
         protected global::System.Web.UI.WebControls.DropDownList searchEngineDW;
         
         /// <summary>
-        /// TitleListBox control.
+        /// keywordtbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox TitleListBox;
+        protected global::System.Web.UI.WebControls.TextBox keywordtbox;
         
         /// <summary>
-        /// UrlListBox control.
+        /// urltbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox UrlListBox;
+        protected global::System.Web.UI.WebControls.TextBox urltbox;
         
         /// <summary>
-        /// ContentListBox control.
+        /// contenttbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ContentListBox;
+        protected global::System.Web.UI.WebControls.TextBox contenttbox;
         
         /// <summary>
         /// Repeater1 control.

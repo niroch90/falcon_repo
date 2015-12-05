@@ -67,6 +67,33 @@ namespace falcons {
         protected global::System.Web.UI.WebControls.TextBox Aval_Para_Tbox;
         
         /// <summary>
+        /// tagsBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button tagsBtn;
+        
+        /// <summary>
+        /// tagsrepeater control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater tagsrepeater;
+        
+        /// <summary>
+        /// categoryRepeater control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater categoryRepeater;
+        
+        /// <summary>
         /// html_fix_button control.
         /// </summary>
         /// <remarks>

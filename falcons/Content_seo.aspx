@@ -110,6 +110,60 @@
                 </asp:UpdatePanel>
                 </div>
                 </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Related Tags<asp:Button ID="tagsBtn" runat="server" Text="Get Tags" CssClass="btn btn-default " OnClick="getKeywordTags"/> </div>
+                <div class="panel-body">
+                    <div class="col-md-6">
+                        <asp:Repeater ID="tagsrepeater" runat="server">
+                        <HeaderTemplate>
+                            <table class="table table-hover">
+                                <tr>
+                                    <th class="text-primary">Sugested Tags</th>
+
+                                </tr>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <tr>
+                                <td class="text-warning">
+                                    <%# Container.DataItem %>
+                                </td>
+
+                            </tr>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </table><br />
+                        </FooterTemplate>
+                    </asp:Repeater>
+                    </div>
+                    <div class="col-md-6">
+                        <asp:Repeater ID="categoryRepeater" runat="server">
+                             <HeaderTemplate>
+                            <table class="table table-hover">
+                                <tr>
+                                    <th class="text-primary">Sugested Categories</th>
+
+                                </tr>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <tr>
+                                <td class="text-warning">
+                                    <%# Container.DataItem %>
+                                </td>
+
+                            </tr>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </table><br />
+                        </FooterTemplate>
+                        </asp:Repeater>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
                 </div>
 </asp:Content>
 

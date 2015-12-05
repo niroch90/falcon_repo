@@ -22,7 +22,7 @@ namespace falcons
         string importantWord;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            worddtlRow.Visible = false;
                // AjaxControlToolkit.HTMLEditor.Editor editor_previous_content = (AjaxControlToolkit.HTMLEditor.Editor)Master.FindControl("editor1");
                // editor_previous_content.Content = (String)(Session["my_editor_content"]);
             
@@ -60,18 +60,18 @@ namespace falcons
 
                 //var result=googlesearchobject.GoogleKeywordGetter(userKeyword);
                 //clear previous values
-                TitleListBox.Items.Clear();
-                UrlListBox.Items.Clear();
-                ContentListBox.Items.Clear();
+                keywordtbox.Text = string.Empty;
+                urltbox.Text = string.Empty;
+                contenttbox.Text = string.Empty;
                 DataTable dt = new DataTable();
                 dt.Columns.Add("imageUrl", typeof(string));
                 foreach (var item in search.Items)
                 {
 
                     //int index = search.Items.IndexOf(item);
-                    TitleListBox.Items.Add(item.Title);
-                    UrlListBox.Items.Add(item.Link);
-                    ContentListBox.Items.Add(item.Snippet);
+                    keywordtbox.Text += item.Title + Environment.NewLine;
+                    urltbox.Text += item.Link + Environment.NewLine;
+                    contenttbox.Text += item.Snippet + Environment.NewLine;
                     //ContentListBox.Attributes.Add()
                  // var keysforimages = item.Pagemap["cse_image"];
                     
@@ -138,20 +138,22 @@ namespace falcons
                 webquery = webquery.AddQueryOption("$top", 10);
                 var webresults = webquery.Execute();
                 //clear all previous items
-                TitleListBox.Items.Clear();
-                UrlListBox.Items.Clear();
-                ContentListBox.Items.Clear();
+                keywordtbox.Text = string.Empty;
+                urltbox.Text = string.Empty;
+                contenttbox.Text = string.Empty;
                
  
                 foreach (var results in webresults)
                 {
 
 
-                    TitleListBox.Items.Add(results.Title);
-                    UrlListBox.Items.Add(results.Url);
-                    ContentListBox.Items.Add(results.Description);
+                    //TitleListBox.Items.Add(results.Title);
+                    //UrlListBox.Items.Add(results.Url);
+                    //ContentListBox.Items.Add(results.Description);
                     //ContentListBox.Attributes.Add()
-
+                    keywordtbox.Text += results.Title +Environment.NewLine;
+                    urltbox.Text += results.Url + Environment.NewLine;
+                    contenttbox.Text += results.Description + Environment.NewLine;
                     
                 }
 
@@ -165,8 +167,10 @@ namespace falcons
 
         }
    int countEditorwords;
+   int keywordValueCount;
     public void kwExtractorbtn_Click(object sender, EventArgs e)
     {
+       
         AjaxControlToolkit.HTMLEditor.Editor master_editor_content = (AjaxControlToolkit.HTMLEditor.Editor)Master.FindControl("Editor1");
         String editortext = master_editor_content.Content;
         //string cs = ConfigurationManager.ConnectionStrings["falcon_cs"].ConnectionString;
@@ -268,7 +272,12 @@ namespace falcons
         List<string> keywordList = new List<string>();
         foreach (string word in editorWords)
         {
-            MatchCollection matches = Regex.Matches(word, "[a-z]([:']?[a-z])*",
+
+            string noHTML = Regex.Replace(word, @"<[^>]+>|&nbsp;", "").Trim();
+            string noHTMLNormalised = Regex.Replace(noHTML, @"\s{2,}", " ");
+            string finaleword = noHTMLNormalised.Replace("\'", "");
+
+            MatchCollection matches = Regex.Matches(finaleword, "[a-z]([:']?[a-z])*",
                                     RegexOptions.IgnoreCase);
             foreach (Match match in matches)
             {
@@ -299,6 +308,7 @@ namespace falcons
         keywordt.Columns.Add("count", typeof(int));
         keywordt.Columns.Add("position", typeof(int));
         keywordt.Columns.Add("titleaval", typeof(string));
+        keywordt.Columns.Add("value", typeof(int));
         string contentTitle = (string)(Session["content_title"]);
       string[] titlewrdArray=new string[100];
         if(contentTitle!=null)
@@ -311,12 +321,17 @@ namespace falcons
         
         foreach(string keyword in keywordfinal){
             int count = 0;
+            keywordValueCount = 0;
             string valueavailability;
             int posiionofthekeyword = Array.IndexOf(editorWords,keyword);
+            if(posiionofthekeyword<=20){
+                keywordValueCount = keywordValueCount + 1;
+            }
             int titleposotionkwrd = Array.IndexOf(titlewrdArray,keyword);
             if (titleposotionkwrd > -1)
             {
-                valueavailability = "yes";  
+                valueavailability = "yes";
+                keywordValueCount = keywordValueCount + 1;
             }
             else
             {
@@ -330,8 +345,11 @@ namespace falcons
                     count = count + 1;
                 }
             }
-
-            keywordt.Rows.Add(keyword,count,posiionofthekeyword,valueavailability);
+            if(count>=2)
+            {
+                keywordValueCount = keywordValueCount + 1;
+            }
+            keywordt.Rows.Add(keyword,count,posiionofthekeyword,valueavailability,keywordValueCount);
 
         }
 
@@ -344,6 +362,7 @@ namespace falcons
         }
         //getLoadedDatatable(keywordt);
         Session.Add("keyworddt", keywordt);
+        Session.Add("editorwords", countEditorwords);
     }
 
     //public void getLoadedDatatable(DataTable dtloaded)
@@ -353,19 +372,25 @@ namespace falcons
     //}
     protected void editorKeywordsLbox_SelectedIndexChanged(object sender, EventArgs e)
     {
+        int noOfwordsinEditor = (int)(Session["editorwords"]);
         DataTable lastloadeddt = Session["keyworddt"] as DataTable;
         string lboxSelectedTxt = editorKeywordsLbox.SelectedValue.ToString();
         DataRow foundkeyword = lastloadeddt.Select("keyword ='"+lboxSelectedTxt+"'").First();
         keywrdnamelbl.Text = "Selected word Name:" + lboxSelectedTxt;
         
             keywrdcountlbl.Text = foundkeyword[1].ToString();
-
-
+            int pos = (int)foundkeyword[2];
+            double keyvalue = (Convert.ToDouble(foundkeyword[4]) / 3) * 10;
+            keyValuelbl.Text = keyvalue.ToString();
             int ewordsCount = countEditorwords;
             int keywordcountinContent =(int) (foundkeyword[1]);
-            int kwordDensity = (keywordcountinContent / ewordsCount) * 100;
+            double kwordDensity = (Convert.ToDouble(keywordcountinContent) / Convert.ToDouble(noOfwordsinEditor)) * 100;
             kwrdDensitylbl.Text = kwordDensity.ToString();
-        importantWord = lboxSelectedTxt;
+            keywordpos.Text = pos.ToString();
+            titleappeatlbl.Text = foundkeyword[3].ToString();
+            importantWord = lboxSelectedTxt;
+        
+        worddtlRow.Visible = true;
         Keyword_research_button(sender,e);
     }
 

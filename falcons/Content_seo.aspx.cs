@@ -11,6 +11,7 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.IO;
+using System.Data;
 
 namespace falcons
 {
@@ -262,6 +263,65 @@ namespace falcons
             }
             // Return the number of words that were counted
             return countedWords;
+        }
+        DataTable tagdataTable = new DataTable();
+        public void getKeywordTags(object sender, EventArgs e)
+        {
+            AjaxControlToolkit.HTMLEditor.Editor master_editor = (AjaxControlToolkit.HTMLEditor.Editor)Master.FindControl("Editor1");
+            String editorcontent = master_editor.Content;
+            HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(editorcontent);
+            var root = doc.DocumentNode;
+            var sb = new StringBuilder();
+            //DescendantNodesAndSelf()
+            foreach (var node in root.DescendantNodesAndSelf())
+            {
+                if (!node.HasChildNodes)
+                {
+                    string text = node.InnerText;
+                    if (!string.IsNullOrEmpty(text))
+                        sb.AppendLine(Regex.Replace(text, @"\t|\n|\r|[|]|(|)|{|}", ""));
+                    //sb.AppendLine(text.Trim(new char[] { ' ', '\t', '\n', '\r', '[', ']', '(', ')', '{', '}' }));
+                }
+            }
+
+            string[] editorWords = sb.ToString().Split(new Char[] { ',', '\n', ' ', '\r', ';' });
+
+            //string connString ="falcon_cs";
+            string query = "SELECT * FROM Categorytbl INNER JOIN KeywordCattbl ON Categorytbl.Category_ID = KeywordCattbl.KeywordCat_ID ";
+
+            string cs = ConfigurationManager.ConnectionStrings["falcon_cs"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                
+                SqlDataAdapter sda = new SqlDataAdapter(query, con);
+                sda.Fill(tagdataTable);
+
+            }
+            List<string> tagslist = new List<string>();
+            List<string> categorylist = new List<string>();
+            foreach (string eword in editorWords)
+            {
+                string noHTML = Regex.Replace(eword, @"<[^>]+>|&nbsp;", "").Trim();
+                string noHTMLNormalised = Regex.Replace(noHTML, @"\s{2,}", " ");
+                string finaleword = noHTMLNormalised.Replace("\'","");
+                DataRow[] foundkeyword = tagdataTable.Select("Keyword_Name ='" + finaleword + "'");
+                if(foundkeyword!= null)
+                {
+                    foreach(DataRow row in foundkeyword)
+                    {
+                        string keywordintagtbl = row[3].ToString();
+                        string categoryintagtbl = row[1].ToString();
+                        tagslist.Add(keywordintagtbl);
+                        categorylist.Add(categoryintagtbl);
+                    }
+                }
+            }
+            tagsrepeater.DataSource = tagslist.Distinct();
+            tagsrepeater.DataBind();
+            categoryRepeater.DataSource = categorylist.Distinct();
+            categoryRepeater.DataBind();
+
         }
 
        
