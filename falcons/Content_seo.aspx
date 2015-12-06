@@ -251,7 +251,9 @@
                                             <asp:TextBox ID="keywordstbox" runat="server" CssClass="form-control"></asp:TextBox></td>
                                     </tr>
                                     <tr>
-                                        <td></td>
+                                        <td>
+                                            <asp:Button ID="metaSuggestion" runat="server" Text="Suggest"  CssClass="btn btn-danger" OnClick="metaSuggestion_Click"/>
+                                        </td>
                                         <td>
                                             <asp:Button ID="metatagbtn" runat="server" Text="Generate Meta Tags" OnClick="metatagbtn_Click" CssClass="btn btn-primary" /></td>
                                         <td></td>
@@ -259,7 +261,8 @@
                                     <tr>
                                         <td></td>
                                         <td>
-                                            <asp:TextBox ID="metaresulttbox" runat="server" CssClass="form-control" Rows="5" TextMode="MultiLine"></asp:TextBox></td>
+                                            <textarea id="metaresulttarea" cols="20" rows="6" class="form-control" runat="server" readonly="readonly"></textarea>
+                                           <%-- <asp:TextBox ID="metaresulttbox" runat="server" CssClass="form-control" Rows="5" TextMode="MultiLine"></asp:TextBox>--%></td>
                                         <td></td>
                                     </tr>
                                 </table>
@@ -375,11 +378,11 @@
                 <div class="row">
                     <table class="table ">
                     <tr><td class="col-md-4">Title </td><td class="col-md-4">70</td></tr>
-                    <tr><td class="col-xs-12"><textarea id="TitleTarea" class="form-control"  rows="2" onblur="titlereset()"></textarea></td></tr>
+                    <tr><td class="col-xs-12"><textarea id="TitleTarea" class="form-control"  rows="2" onblur="titlereset()" ></textarea></td></tr>
                     <tr><td class="col-md-4">Description</td><td class="col-md-4">156</td></tr>
-                    <tr><td class="col-xs-12"><textarea id="DesTbox" class="form-control" rows="2"></textarea></td></tr>
+                    <tr><td class="col-xs-12"><textarea id="DesTbox" class="form-control" rows="2" ></textarea></td></tr>
                     <tr><td class="col-md-4">Url</td><td class="col-md-4"></td></tr>
-                    <tr><td class="col-xs-12"><textarea id="UrlTarea" class="form-control"  rows="1"></textarea></td></tr>
+                    <tr><td class="col-xs-12"><textarea id="UrlTarea" class="form-control"  rows="1" ></textarea></td></tr>
                 </table>
                 </div>
             </div>
@@ -416,7 +419,7 @@
                             <div id="progress_block" class="progress" runat="server" style="display: none;">
                                 <div id="word_percentage_div" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" runat="server">
                                     <div>
-                                        <div id="progress_text" runat="server"><%= WordCountText%></div>
+                                        <%--<div id="progress_text" runat="server"><%= WordCountText%></div>--%>
                                     </div>
                                 </div>
                             </div>

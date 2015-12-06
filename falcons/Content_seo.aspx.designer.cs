@@ -166,6 +166,15 @@ namespace falcons {
         protected global::System.Web.UI.WebControls.TextBox keywordstbox;
         
         /// <summary>
+        /// metaSuggestion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button metaSuggestion;
+        
+        /// <summary>
         /// metatagbtn control.
         /// </summary>
         /// <remarks>
@@ -175,13 +184,13 @@ namespace falcons {
         protected global::System.Web.UI.WebControls.Button metatagbtn;
         
         /// <summary>
-        /// metaresulttbox control.
+        /// metaresulttarea control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox metaresulttbox;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea metaresulttarea;
         
         /// <summary>
         /// UpdatePanel1 control.
@@ -227,15 +236,6 @@ namespace falcons {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl word_percentage_div;
-        
-        /// <summary>
-        /// progress_text control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl progress_text;
         
         /// <summary>
         /// Master property.

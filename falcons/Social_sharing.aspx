@@ -149,3 +149,100 @@
  
 
  </asp:Content>
+<asp:Content runat="server" ContentPlaceHolderID="ContentPlaceHolder2">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-md-12">
+                        <div class="input-group">
+
+                            <asp:TextBox ID="socialsearchtbox" runat="server" CssClass="form-control" placeholder=" Check content in Facebook and Twitter"></asp:TextBox>
+                            <span class="input-group-btn">
+                                <asp:Button ID="socialSearch" runat="server" Text="Check" OnClick="socialSearch_Click" CssClass="btn btn-default" />
+                            </span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="fbrow" runat="server">
+        <div class="col-md-12">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Facebook
+    </div>
+    <div class="panel-body">
+       <%-- <asp:ListBox ID="facebookurllst" runat="server" CssClass="form-control"></asp:ListBox>--%>
+                        <asp:Repeater ID="facebookrepeater" runat="server">
+                            <HeaderTemplate>
+                                <table class="table table-hover">
+                                    <tr>
+                                        <th class="text-primary">Facebook Name</th>
+                                        <th class="text-primary">Facebook Url</th>
+
+                                    </tr>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <tr>
+                                    <td class="text-warning">
+                                       <%# Eval("fbname").ToString() %>
+                                    </td>
+                                    <td class="text-warning">
+                                        <asp:HyperLink ID="fblink" runat="server" NavigateUrl='<%# Eval("fburl").ToString() %>' Text='<%# Eval("fburl").ToString() %>' Target="_blank"></asp:HyperLink>
+                                        
+                                    </td>
+
+                                </tr>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                </table><br />
+                            </FooterTemplate>
+
+                        </asp:Repeater>
+    </div>
+</div>
+        </div>
+        </div>
+        <div class="row" id="twitterrow" runat="server">
+<div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Twitter</div>
+                <div class="panel-body">
+                    <asp:Repeater ID="twitterrepeater" runat="server" >
+                            <HeaderTemplate>
+                                <table class="table table-hover">
+                                    <tr>
+                                        <th class="text-primary">Twitter Name</th>
+                                        <th class="text-primary">Twitter Url</th>
+
+                                    </tr>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <tr>
+                                    <td class="text-warning">
+                                      <%# Eval("twittername").ToString() %>
+                                    </td>
+                                    <td class="text-warning">
+                                        <asp:HyperLink ID="twiterlink" runat="server" NavigateUrl='<%# Eval("twitterurl").ToString() %>' Text='<%# Eval("twitterurl").ToString() %>' Target="_blank"></asp:HyperLink>
+                                        
+                                       
+                                    </td>
+
+                                </tr>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                </table><br />
+                            </FooterTemplate>
+
+                        </asp:Repeater>
+                   <%-- <asp:ListBox ID="twitterurllst" runat="server" CssClass="form-control"></asp:ListBox>--%>
+                </div>
+            </div>
+        </div>
+        </div>
+         
+   
+    </asp:Content>

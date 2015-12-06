@@ -20,8 +20,7 @@ namespace falcons
        
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-
+            
            // Button1_Click();
         }
         //protected void Page_PreInit(object sender,EventArgs e)
@@ -172,7 +171,7 @@ namespace falcons
             String metatitle = "<title>" + title + "</title>";
             String metadescription = "<meta name=\"Description\" content=\"" + description + "\">";
             String metakeywords = "<meta name=\"Keywords\" content=\"" + keywords + "\">";
-            metaresulttbox.Text = "Copy below tags and paste within the header tag"+"\n"+metatitle + "\n" + metadescription + "\n" + metakeywords;
+            metaresulttarea.InnerText = "Copy below tags and paste within the header tag"+"\n"+metatitle + "\n" + metadescription + "\n" + metakeywords;
         }
 
         //analyse the rank in google
@@ -224,7 +223,7 @@ namespace falcons
             string word_count_string = word_percentage.ToString("F2") + "%";
            // word_percentage_div.Style.Add("display", "block");
             progress_block.Style.Add("display", "block");
-            progress_text.Style.Add("display", "block");
+            //progress_text.Style.Add("display", "block");
             word_percentage_div.Style.Add("width", word_count_string);
             WordCountText = "strength"+word_count_string;
 
@@ -280,7 +279,10 @@ namespace falcons
                 {
                     string text = node.InnerText;
                     if (!string.IsNullOrEmpty(text))
+                    {
                         sb.AppendLine(Regex.Replace(text, @"\t|\n|\r|[|]|(|)|{|}", ""));
+                    }
+                        
                     //sb.AppendLine(text.Trim(new char[] { ' ', '\t', '\n', '\r', '[', ']', '(', ')', '{', '}' }));
                 }
             }
@@ -323,6 +325,41 @@ namespace falcons
             categoryRepeater.DataBind();
 
         }
+
+        protected void metaSuggestion_Click(object sender, EventArgs e)
+        {
+            string editorContent = (String)(Session["editor_content"]);
+            string title = (string)(Session["content_title"]);
+
+            titletbox.Text = !string.IsNullOrEmpty(title)? title:"No title Found!!! Put the title first";
+
+            HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(editorContent);
+            var root = doc.DocumentNode;
+            var sb = new StringBuilder();
+            //DescendantNodesAndSelf()
+            foreach (var node in root.DescendantNodesAndSelf())
+            {
+                if (!node.HasChildNodes)
+                {
+                    string text = node.InnerText;
+                    if (!string.IsNullOrEmpty(text))
+                    {
+                        sb.AppendLine(text);
+                    }
+
+                    //sb.AppendLine(text.Trim(new char[] { ' ', '\t', '\n', '\r', '[', ']', '(', ')', '{', '}' }));
+                }
+            }
+
+            string contentsentents = sb.ToString();
+            string description = contentsentents.Split(new[] { '\r', '\n' }).FirstOrDefault();
+            descriptiontbox.Text = description;
+            keywordstbox.Text = "Use Desired Keywords";
+
+        }
+
+        
 
        
     }
